@@ -1,0 +1,43 @@
+schema_version: 1
+updated_at: 2026-08-04
+scale:
+  minimum: 0
+  completion_threshold: 4
+  maximum: 5
+
+skills:
+  python:
+    object_model: { score: null, target: 4, evidence: [] }
+    functions_and_scope: { score: null, target: 4, evidence: [] }
+    data_structures: { score: null, target: 4, evidence: [] }
+    algorithms: { score: null, target: 4, evidence: [] }
+    typing: { score: null, target: 4, evidence: [] }
+    testing_and_debugging: { score: null, target: 4, evidence: [] }
+    concurrency: { score: null, target: 4, evidence: [] }
+  linux:
+    process_model: { score: null, target: 4, evidence: [] }
+    filesystem_and_permissions: { score: null, target: 4, evidence: [] }
+    networking: { score: null, target: 4, evidence: [] }
+    observability: { score: null, target: 4, evidence: [] }
+  docker:
+    runtime_model: { score: null, target: 4, evidence: [] }
+    image_building: { score: null, target: 4, evidence: [] }
+    networking_and_storage: { score: null, target: 4, evidence: [] }
+  typescript:
+    javascript_runtime: { score: null, target: 4, evidence: [] }
+    type_system: { score: null, target: 4, evidence: [] }
+    node_runtime: { score: null, target: 4, evidence: [] }
+  platform_engineering:
+    ci_cd: { score: null, target: 4, evidence: [] }
+    infrastructure_as_code: { score: null, target: 4, evidence: [] }
+    kubernetes: { score: null, target: 4, evidence: [] }
+  ai_engineering:
+    llm_foundations: { score: null, target: 4, evidence: [] }
+    rag: { score: null, target: 4, evidence: [] }
+    agents_and_workflows: { score: null, target: 4, evidence: [] }
+    fine_tuning_and_evaluation: { score: null, target: 4, evidence: [] }
+  english:
+    technical_reading: { score: null, target: 4, evidence: [] }
+    technical_writing: { score: null, target: 4, evidence: [] }
+    listening: { score: null, target: 4, evidence: [] }
+    speaking: { score: null, target: 4, evidence: [] }
