@@ -8,22 +8,21 @@ estimated_hours: 4
 # Day 01 — Ortam Envanteri, Git ve Başlangıç Kaydı
 
 ## Günün amacı
-
 Çalışma ortamını varsayımlarla değil sürüm, kaynak ve çalışma çıktılarıyla doğrulamak; repository'yi yerel geliştirme akışına bağlamak ve Python + Linux + network için ilk gözlemlenebilir baseline'ı üretmek.
 
 Codex bu oturumda öğretmen ve reviewer'dır. Kritik kodu kullanıcı yazar; Codex mekanizmayı açıklar, hipotezleri sorgular, diff/test review yapar ve yanlış zihinsel modelleri görünür kılar.
 
-## 1. Ortam envanteri — 45 dakika
+> **Zaman bütçesi:** Bu günün toplam zorunlu bütçesi 4 saattir. Alt bölüm süreleri üst sınırdır; kurulum hızlı biterse kalan süre derinleşme veya notlara aktarılır. 4 saat aşıldığında ek işler ertesi güne taşınır.
+
+## 1. Ortam envanteri — en fazla 40 dakika
 
 Windows PowerShell:
-
 ```powershell
 wsl --status
 wsl --version
 ```
 
 WSL Ubuntu:
-
 ```bash
 uname -a
 cat /etc/os-release
@@ -39,81 +38,45 @@ df -h
 nproc
 ```
 
-### Kaydet
+Kaydet: işletim sistemi, Python/uv/Git/Node sürümleri, CPU/RAM/disk görünümü ve eksik araçlar. Docker mevcutsa sürümü kaydet; yoksa Week 001 için zorunlu değildir.
 
-- İşletim sistemi ve sürümü
-- Python sürümü
-- `uv`, Git, Docker, Node sürümleri
-- CPU, RAM ve disk görünümü
-- Eksik veya hatalı araçlar
-
-## 2. Repository çalışma akışı — 30 dakika
-
-Remote `learning/week-001` branch'i kickoff için hazırlanmıştır. Yerelde:
+## 2. Repository çalışma akışı — en fazla 30 dakika
+Repository zaten klonluysa yeniden clone etme. Önce:
 
 ```bash
-git clone https://github.com/AlbSar/verhex-engineering-mastery.git
-cd verhex-engineering-mastery
 git fetch origin
-git switch --track origin/learning/week-001
 git status
-git log --oneline --decorate -10
+git branch -vv
+git log --oneline --decorate --graph --all -12
 ```
 
-Repository zaten klonluysa yeniden clone etme; mevcut çalışma ağacında `git fetch origin` ve ardından ilgili branch'e geç.
+Yerel branch remote'dan ayrışmışsa körlemesine reset/rebase yapma. Commit grafiğini incele ve kullanıcı çalışmalarını koruyan entegrasyon planı çıkar.
 
-Kendi cümlelerinle açıkla:
+Kendi cümlelerinle açıkla: working tree, staging area, commit ve branch pointer.
 
-- Working tree nedir?
-- Staging area nedir?
-- Commit neyi temsil eder?
-- Branch gerçekte neyi işaret eder?
-
-## 3. Python proje alanı — 45 dakika
-
-`05-labs/python/week-001/` altında ilk çalışma alanını kendin kur:
+## 3. Python proje alanı — en fazla 40 dakika
+`05-labs/python/week-001/` altında çalışma alanını kendin kur. Minimum:
 
 ```text
 week-001/
 ├── README.md
 ├── pyproject.toml
 ├── src/
-│   └── week001/
-│       └── __init__.py
 └── tests/
 ```
 
-Araçları ekle:
+pytest + Ruff ve seçilen type checker'ı doğrula. Codex proje dosyalarını senin yerine üretmez; yapı review yapar.
 
-- pytest
-- Ruff
-- Pyright veya mypy
+## 4. Python + Linux + Network baseline — 75 dakika
 
-Doğrulama:
+### Python
+`runtime_probe.py` dosyasını **kendin yaz**:
+- immutable + mutable örnek
+- iki ismin aynı nesneye bağlanması
+- `id()`, `type()`, `==`, `is`
+- çalıştırmadan önce en az üç tahmin
 
-```bash
-uv sync
-uv run pytest
-uv run ruff check .
-```
-
-Codex'ten proje dosyalarını senin yerine üretmesini isteme. Önce kendin kur; daha sonra yapı, dependency ve config review iste.
-
-## 4. Python + Linux + Network ilk üçlü baseline — 60 dakika
-
-### Python — 20 dakika
-
-`runtime_probe.py` dosyasını **kendin yaz**. Program şu davranışları göstermeli:
-
-- Bir immutable nesne ve bir mutable nesne oluştur.
-- İki ismin aynı nesneye bağlandığı bir örnek üret.
-- `id()`, `type()`, `==` ve `is` sonuçlarını gözlemle.
-- Çalıştırmadan önce en az üç sonucu tahmin et ve sonra gerçekle karşılaştır.
-
-Codex'e ancak tahminlerini ve sonucu gösterdikten sonra mekanizma review'u yaptır.
-
-### Linux — 20 dakika
-
+### Linux
 ```bash
 echo $$
 ps -fp $$
@@ -121,86 +84,57 @@ cat /proc/$$/status | head -40
 ls -l /proc/$$/fd | head
 ```
 
-Kendi cümlelerinle cevapla:
+Açıkla: shell neden process, `$$`, `/proc/<PID>` ve file descriptor.
 
-- Shell neden bir process'tir?
-- `$$` neyi temsil eder?
-- `/proc/<PID>` gerçek bir disk klasörü müdür, yoksa kernel görünümü müdür?
-- File descriptor neden önemlidir?
-
-### Network — 20 dakika
-
+### Network
 Bir terminalde:
-
 ```bash
 python -m http.server 8080 --bind 127.0.0.1
 ```
-
 Başka terminalde:
-
 ```bash
 ss -lntp | grep 8080
 curl -v http://127.0.0.1:8080/
 getent hosts localhost
 ```
 
-Kendi cümlelerinle cevapla:
+Açıkla: loopback, port, listening socket, client/server ve TCP → HTTP ilişkisi.
 
-- `127.0.0.1` neyi temsil ediyor?
-- `8080` process midir, socket midir, port numarası mıdır?
-- `curl` isteğinde client ve server rolleri hangileri?
-- TCP bağlantısı kurulmadan HTTP request gönderilebilir mi?
+## 5. Daily log + teach-back — 45 dakika
+`04-daily-logs/2026-09/2026-09-05.md` içine gerçek sonuçları kaydet:
+- ortam
+- tahmin/gerçek farkları
+- Linux/network gözlemleri
+- hatalar
+- yanlış varsayımlar
+- açık sorular
 
-Deney bitince server process'ini kontrollü biçimde sonlandır.
+Kısa teach-back:
+> Process → socket → TCP → HTTP → application zinciri nasıl bağlanır?
 
-## 5. İlk daily log — 20 dakika
-
-`04-daily-logs/2026-09/2026-09-05.md` dosyası kickoff kaydı olarak branch'e eklenmiştir. Gerçek terminal ve kod sonuçlarınla şu alanları doldur:
-
-- Ortamda hazır olanlar
-- Eksik olanlar
-- Python tahmin/gerçek sonuçları
-- Linux process gözlemleri
-- Network gözlemleri
-- Kurulum sırasında oluşan hatalar
-- Bugünkü yanlış varsayımlar
-- Sonraki oturum için açık sorular
-
-## 6. İngilizce baseline başlangıcı — 30 dakika
-
-Başlık:
-
-> My Current Engineering Background and the Purpose of the Verhex Mastery Marathon
-
-İlk 150–200 kelimeyi AI yardımı olmadan yaz. Tam metin Day 07'de 300–500 kelimeye çıkarılacak.
-
-## 7. Commit — 10 dakika
-
+## 6. Commit — en fazla 10 dakika
 ```bash
 git add .
 git diff --cached
 git commit -m "chore: record week 1 engineering baseline"
 ```
 
-Commit öncesi diff'i satır satır oku. Codex'ten commit öncesinde diff review isteyebilirsin; değişiklikleri sen onayla.
-
-## Teslimatlar
-
+## Zorunlu teslimatlar
 - [ ] Ortam envanteri
-- [ ] Yerel repository ve `learning/week-001` branch'i
+- [ ] Güvenli local/remote Git durum analizi
 - [ ] Python çalışma alanı
-- [ ] `runtime_probe.py` ve tahmin/sonuç kaydı
+- [ ] `runtime_probe.py` + tahmin/sonuç
 - [ ] Linux process gözlemi
 - [ ] Loopback HTTP/network gözlemi
-- [ ] Doldurulmuş daily log
-- [ ] İngilizce tanıtım taslağı
+- [ ] Daily log
 - [ ] İlk anlamlı kullanıcı commit'i
 
-## Gün sonu kontrol soruları
+## Opsiyonel
+- [ ] Docker sürüm/kurulum kontrolü
+- [ ] Teknik İngilizce kısa notu
 
-1. WSL içinde çalışan process'ler hangi kernel üzerinde çalışıyor?
-2. `uv run pytest` komutunda `uv` hangi sorumluluğu üstleniyor?
-3. Branch neden repository'nin tam kopyası değildir?
-4. Bir tool sürümünü kaydetmek neden reproducibility için önemlidir?
-5. `python -m http.server` başladığında process, socket, port ve HTTP katmanları nasıl birbirine bağlanır?
-6. Python'da bir isim ile nesne arasındaki ilişkiyi “değişken kutudur” modeli neden eksik açıklar?
+## Gün sonu kontrolü
+1. Branch neden repository'nin tam kopyası değildir?
+2. `/proc` hangi bilgiyi nereden üretir?
+3. `python -m http.server` başladığında process, socket, port ve HTTP nasıl bağlanır?
+4. Python'da name → object modelini açıklayabilir misin?
