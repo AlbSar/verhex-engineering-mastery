@@ -2,8 +2,8 @@
 status: active
 week: 1
 phase: 0
-start_date: 2026-08-04
-end_date: 2026-08-10
+start_date: 2026-09-05
+end_date: 2026-09-12
 owner: Alperen
 ---
 
@@ -17,6 +17,8 @@ Python'da object, identity, reference, mutability, scope ve function davranışl
 
 Bu hafta hız değil doğruluk ölçülecek. İlk denemeler AI yardımı olmadan yapılır. AI daha sonra açıklama, code review, test boşluğu ve kavramsal doğrulama için kullanılır.
 
+Codex'in rolü öğretmen ve reviewer'dır; kritik uygulamaları kullanıcı yazar. Codex çözümü devralmak yerine mekanizmayı açıklar, soru sorar, tasarımı eleştirir, test boşluklarını gösterir ve kullanıcı tarafından yazılan kodu review eder.
+
 ## Haftalık zaman bütçesi
 
 | Alan | Hedef süre |
@@ -28,6 +30,12 @@ Bu hafta hız değil doğruluk ölçülecek. İlk denemeler AI yardımı olmadan
 | Teknik İngilizce | 4,5 saat |
 | Dokümantasyon ve retrospektif | 2,5 saat |
 | **Toplam** | **29 saat** |
+
+## Takvim
+
+- 5 Eylül Cumartesi: Day 01 — kickoff ve ortam baseline
+- 6 Eylül Pazar: dinlenme / hafif tekrar; yeni zorunlu teslimat yok
+- 7–12 Eylül: Day 02–Day 07
 
 ## Günlük akış
 
