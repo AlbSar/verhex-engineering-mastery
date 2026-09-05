@@ -22,7 +22,7 @@ Bu repository programın **tek kanonik kaynağıdır**.
 ## Aktif çalışma döngüsü
 
 **Faz 0 — Tanılama ve Çalışma Ortamı**  
-**Week 001 — 4–10 Ağustos 2026**
+**Week 001 — 5–12 Eylül 2026**
 
 - Takip issue'su: [#1 — Week 001 Tanılama ve Python Çalışma Modeli](https://github.com/AlbSar/verhex-engineering-mastery/issues/1)
 - Haftalık plan: [`03-weeks/week-001/WEEK_PLAN.md`](03-weeks/week-001/WEEK_PLAN.md)
@@ -47,4 +47,4 @@ Bu repository programın **tek kanonik kaynağıdır**.
 
 ## Durum
 
-`active / phase-00 / week-001` — başlangıç tanılaması ve Python çalışma modeli haftası yürürlükte.
+`active / phase-00 / week-001` — başlangıç tanılaması ve Python çalışma modeli haftası 5 Eylül 2026 itibarıyla yürürlükte.
