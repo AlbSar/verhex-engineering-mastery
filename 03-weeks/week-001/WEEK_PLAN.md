@@ -1,143 +1,155 @@
 ---
 status: active
 week: 1
-phase: 0
+phase: foundations
 start_date: 2026-09-05
 end_date: 2026-09-12
 owner: Alperen
 ---
 
-# Week 001 — Tanılama ve Python Çalışma Modeli
+# Week 001 — Baseline: Python + Linux + Networking
 
 ## Haftanın ana yeterliliği
 
-Python'da object, identity, reference, mutability, scope ve function davranışlarını deneylerle açıklamak; mevcut Linux, Git, Docker, debugging ve teknik İngilizce seviyesini kanıtlarla ölçmek.
+İlk hafta amaç hız değil, gerçek başlangıç seviyesini kanıtla görmek ve üç temel katmanı birbirine bağlamaktır:
 
-## Haftanın çalışma prensibi
+- Python'da object/reference/mutability davranışı
+- Linux'ta process/PID/file descriptor/`/proc` gözlemi
+- Network'te process → socket → TCP → HTTP zinciri
 
-Bu hafta hız değil doğruluk ölçülecek. İlk denemeler AI yardımı olmadan yapılır. AI daha sonra açıklama, code review, test boşluğu ve kavramsal doğrulama için kullanılır.
+Git çalışma modeli ve toolchain de baseline olarak doğrulanır.
 
-Codex'in rolü öğretmen ve reviewer'dır; kritik uygulamaları kullanıcı yazar. Codex çözümü devralmak yerine mekanizmayı açıklar, soru sorar, tasarımı eleştirir, test boşluklarını gösterir ve kullanıcı tarafından yazılan kodu review eder.
+## Codex çalışma prensibi
+
+Codex Teacher + Reviewer'dır. Kritik öğrenme kodunu kullanıcı yazar. Codex:
+
+- mekanizmayı açıklar,
+- küçük ipuçları verir,
+- yanlış mental modeli arar,
+- kodu review eder,
+- test ve failure senaryosu önerir,
+- production farklarını gösterir.
+
+Tam kurallar: `00-governance/CODEX_TEACHER_PROTOCOL.md`.
 
 ## Haftalık zaman bütçesi
 
+Sürdürülebilir hedef 18–20 saattir. Şirket veya sağlık gibi olağanüstü yüklerde minimum ritim korunur; plan başarısız sayılmaz, evidence bir sonraki güne taşınır.
+
 | Alan | Hedef süre |
 |---|---:|
-| Teknik teori | 6 saat |
-| Kodlama ve laboratuvar | 9 saat |
-| Debugging ve test | 4 saat |
-| Linux/Git/Docker tanılama | 3 saat |
-| Teknik İngilizce | 4,5 saat |
-| Dokümantasyon ve retrospektif | 2,5 saat |
-| **Toplam** | **29 saat** |
+| Kavram / kaynak okuma | 4 saat |
+| Kodlama ve laboratuvar | 7 saat |
+| Linux/network gözlemi | 3 saat |
+| Test + debugging | 3 saat |
+| Dokümantasyon / retrospektif | 2 saat |
+| **Toplam** | **19 saat** |
+
+Teknik İngilizce günlük çıktılara doğal biçimde eklenir; ayrı saat kotası ilk haftada zorunlu değildir.
 
 ## Takvim
 
-- 5 Eylül Cumartesi: Day 01 — kickoff ve ortam baseline
-- 6 Eylül Pazar: dinlenme / hafif tekrar; yeni zorunlu teslimat yok
-- 7–12 Eylül: Day 02–Day 07
+- 5 Eylül Cumartesi: Day 01 — kickoff, environment ve system baseline
+- 6 Eylül Pazar: hafif tekrar / eksik evidence tamamlama
+- 7–12 Eylül: temel Python + Linux + networking lab'ları ve assessment
 
 ## Günlük akış
 
 | Gün | Odak | Ana teslimat |
 |---:|---|---|
-| 1 | Ortam envanteri ve Git | Doğrulanmış toolchain, ilk branch ve daily log |
-| 2 | Object, identity, equality | Deney dosyası ve kavram açıklaması |
-| 3 | Mutability, copy, parameter passing | Hata örnekleri, testler ve debug kaydı |
-| 4 | Scope, namespace, function, closure | Closure laboratuvarı ve late-binding analizi |
-| 5 | Veri yapıları ve algoritmik tanılama | Duplicate analizi ve dependency scheduler |
-| 6 | Linux, network, Docker ve sistem tasarımı | Terminal deneyleri ve ilk mimari diyagram |
-| 7 | İngilizce, sınav ve retrospektif | Baseline puanları, sunum ve Week 002 kararı |
-
-Ayrıntılı görevler aynı klasördeki `DAY_01.md`–`DAY_07.md` dosyalarındadır.
+| 1 | Ortam, Git, process/socket baseline | Toolchain inventory, `runtime_probe.py`, terminal evidence |
+| 2 | Object, identity, equality | Python deney seti + kendi açıklaması |
+| 3 | Mutability, copy, parameter passing | Hatalı varsayım + test + debug journal |
+| 4 | Scope, namespace, function, closure | Closure lab + explanation |
+| 5 | Veri yapıları, Big O, küçük CLI | Typed/deterministic Python CLI |
+| 6 | Linux process + networking | `/proc`, fd, socket, TCP/HTTP gözlemleri |
+| 7 | Assessment + system-design giriş | Baseline score, ilk architecture case, retrospective |
 
 ## Haftanın teorik konuları
 
-- Python object modeli
-- Name binding ve reference semantics
-- Identity ve equality
-- Mutable ve immutable nesneler
-- Hashability
-- Shallow copy ve deep copy
-- Scope, namespace ve LEGB
-- Function object
-- Default argument evaluation
-- Closure ve late binding
-- List, tuple, dictionary ve set seçimleri
-- Big O başlangıç sezgisi
-- Process, PID, signal, port ve container lifecycle
+### Python
+- object ve name binding
+- identity vs equality
+- mutable/immutable
+- hashability
+- shallow/deep copy
+- parameter passing modeli
+- scope/namespace/LEGB
+- functions/closures
+- temel collections ve Big O sezgisi
 
-## Haftanın laboratuvarları
+### Linux
+- user space / kernel space giriş
+- process ve PID
+- parent/child ilişkisi
+- file descriptor
+- stdin/stdout/stderr
+- `/proc`
+- signal giriş
 
-1. Object identity deney seti
-2. Mutable default argument debugging
-3. Shallow/deep copy analizi
-4. Closure ve late binding laboratuvarı
-5. Typed record normalization fonksiyonu
-6. Duplicate customer analyzer
-7. Dependency graph ve cycle detection
-8. Linux process/signal deneyi
-9. Docker lifecycle deneyi
-10. Küçük Python CLI uygulaması
+### Networking
+- IP ve loopback
+- port
+- socket
+- TCP connection
+- client/server
+- HTTP request/response'un TCP üzerinde taşınması
+- DNS'in zincirdeki yeri
 
-## Verhex bağlantısı
+### Git
+- commit object ve DAG zihinsel modeli
+- working tree / index / repository
+- branch pointer
+- merge/rebase kavramsal farkı
 
-Hafta sonunda geliştirilecek küçük CLI, ileride `verhex-python-core` içinde kullanılabilecek şu davranışları taşımalıdır:
+## Haftanın zorunlu laboratuvarları
 
-- Typed input modeli
-- Validation
-- Structured error
-- Deterministic output
-- Unit test
-- Temel structured logging
+1. `runtime_probe.py` — PID/PPID/runtime bilgisi
+2. Object identity/mutability deneyleri
+3. Mutable default argument veya benzeri gerçek Python bug'ını debug etme
+4. `/proc/<pid>` ve file descriptor gözlemi
+5. Python TCP echo server/client
+6. Minimal HTTP server veya raw HTTP gözlemi
+7. Küçük typed CLI
+8. İlk system-design mini case: tek servisli uygulamanın request path diyagramı
 
-Önerilen CLI konusu:
+Docker bu hafta ana öğrenme hedefi değildir. Sadece mevcut kurulum ve temel lifecycle tanılaması yapılabilir; namespaces/cgroups ilerleyen Linux/Container fazında derinleştirilir.
 
-> JSON veya CSV müşteri kayıtlarını okuyup doğrulayan, duplicate kayıtları raporlayan ve hatalı satırları ayrı çıktıya yazan `verhex-record-audit` aracı.
+## Zorunlu evidence
 
-## İngilizce teslimatları
-
-- 300–500 kelimelik teknik tanıtım
-- Resmî Python dokümanından 150 kelimelik özet
-- 10 teknik ifade ve örnek cümle
-- 5 dakikalık sesli anlatım
-- Kısa İngilizce pull request açıklaması
-
-## Zorunlu kanıtlar
-
-- Kod commitleri
-- pytest sonucu
-- Ruff/type-check sonucu
-- Terminal çıktıları
-- En az bir debug journal kaydı
-- Baseline assessment
-- Güncellenmiş skill matrix
-- Week assessment
-- Retrospective
+- kendi yazdığı kritik kod
+- terminal çıktıları
+- pytest veya uygun test çıktısı
+- en az 1 debug journal
+- en az 1 "çalıştırmadan önce tahmin / sonra gözlem" kaydı
+- kendi cümleleriyle Python + process + socket açıklaması
+- skill-matrix baseline
+- week retrospective
 
 ## Geçiş kriterleri
 
-Week 001 tamamlanmış sayılmak için:
+Week 002'ye geçiş için öğrenci:
 
-- Object/reference/mutability kavramları kendi cümleleriyle doğru açıklanmalı.
-- En az 5 Python deneyi ve 8 unit test tamamlanmalı.
-- En az 3 hatalı varsayım debugging yoluyla düzeltilmeli.
-- Dependency graph çözümü cycle tespit etmeli.
-- Linux process ve Docker lifecycle deneyleri belgelenmeli.
-- İngilizce yazılı ve sözlü baseline teslim edilmeli.
-- Skill matrix kanıta dayalı başlangıç puanlarıyla güncellenmeli.
+1. Python'da name → object/reference ilişkisini doğru açıklayabilmeli.
+2. Mutable ve immutable davranışı kodla gösterebilmeli.
+3. Çalışan bir Python process'ini Linux terminalinden PID, `/proc` ve fd perspektifinden gözlemleyebilmeli.
+4. Bir server process'inin socket açıp TCP üzerinden request aldığını açıklayabilmeli ve lab ile göstermeli.
+5. En az bir gerçek bug için symptom → hypothesis → evidence → root cause → regression test zinciri üretmeli.
+6. Git commit/branch modelini dosya kopyası gibi değil graph/pointer modeliyle anlatabilmeli.
+7. Eksiklerini dürüstçe `partial/not-proven` olarak kaydetmeli.
 
-## Haftalık değerlendirme ağırlıkları
+## İlk system-design soruları
 
-| Alan | Ağırlık |
-|---|---:|
-| Kavramsal doğruluk | %25 |
-| Kod kalitesi | %20 |
-| Test ve debugging | %20 |
-| Sistem gözlemi | %15 |
-| Teknik dokümantasyon | %10 |
-| Teknik İngilizce | %10 |
+Hafta sonunda şu sorular cevaplanmalıdır:
 
-## Başarı eşiği
+- Client'tan Python servisine request hangi katmanlardan geçiyor?
+- Process ölürse ne kaybolur, ne kalır?
+- Aynı porta neden iki process normalde bind edemez?
+- Database eklendiğinde state nerede yaşamaya başlar?
+- Latency'nin hangi parçaları network, application ve data katmanından gelir?
 
-Bu hafta için geçme notu bir “başarı/başarısızlık” kararı değildir. Ama Week 002'ye geçmek için tüm zorunlu teslimatlar tamamlanmalı ve kritik kavramsal yanlışlar listelenmiş olmalıdır.
+## Başarı tanımı
+
+Week 001'in amacı "çok konu bitirmek" değildir. Başarılı hafta şu durumda oluşur:
+
+> Öğrenci ilk kez Python kodunu yalnızca dil olarak değil; Linux process'i ve network participant'ı olarak gözlemlemeye başlamış, yanlış mental modellerini kaydetmiş ve sonraki haftalar için güvenilir baseline üretmiştir.
