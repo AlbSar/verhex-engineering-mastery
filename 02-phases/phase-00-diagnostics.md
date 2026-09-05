@@ -2,8 +2,8 @@
 status: active
 phase: 0
 planned_duration: 1 week
-start_date: 2026-08-04
-end_date: 2026-08-10
+start_date: 2026-09-05
+end_date: 2026-09-12
 owner: Alperen
 ---
 
