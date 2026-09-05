@@ -1,6 +1,6 @@
 ---
 status: active
-assessment_date: 2026-08-04
+assessment_date: 2026-09-05
 assessor: ChatGPT + self-assessment
 scoring_scale: 0-5
 ---
@@ -113,8 +113,8 @@ Açıkla:
 ## Uygulama
 
 - Repository'yi klonla.
-- `learning/week-001` branch'i oluştur.
-- Bir günlük log ekle.
+- `learning/week-001` branch'ine geç.
+- Bir günlük log ekle veya mevcut kickoff logunu gerçek sonuçlarla güncelle.
 - Anlamlı bir commit mesajı yaz.
 - `git diff`, `git log --oneline`, `git status` çıktılarını yorumla.
 
