@@ -1,7 +1,7 @@
 ---
 status: ready
 day: 2
-date: 2026-08-05
+date: 2026-09-07
 estimated_hours: 4.5
 ---
 
