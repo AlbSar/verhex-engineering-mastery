@@ -1,7 +1,7 @@
 ---
 status: pending
 week: 1
-retrospective_date: 2026-08-10
+retrospective_date: 2026-09-12
 ---
 
 # Week 001 Retrospective
@@ -10,84 +10,61 @@ retrospective_date: 2026-08-10
 
 | Metrik | Plan | Gerçekleşen | Fark |
 |---|---:|---:|---:|
-| Toplam çalışma süresi | 29 saat | | |
-| Kodlama/lab | 9 saat | | |
-| Teknik İngilizce | 4,5 saat | | |
-| Test sayısı | en az 13 | | |
-| Debug journal | en az 1 | | |
+| Toplam zorunlu çalışma süresi | 19 saat | | |
+| Kodlama/lab | ~8 saat | | |
+| Linux/network/system observation | ~3 saat | | |
+| Test/debugging | ~3 saat | | |
+| Dokümantasyon/teach-back | ~3 saat | | |
+| Ortam/Git başlangıcı | ~2 saat | | |
+| Docker diagnostic | opsiyonel bonus | | |
 
 ## 2. En önemli öğrenmeler
-
 ### Mekanizma düzeyinde öğrendiklerim
-
 - 
-
 ### Daha önce yanlış bildiklerim
-
 - 
-
 ### Yalnızca kullandığım fakat açıklayamadığım yapılar
-
 - 
 
 ## 3. Üretim çıktıları
-
 - Kod:
 - Test:
 - Dokümantasyon:
 - Mimari çıktı:
-- İngilizce çıktı:
+- Terminal/system evidence:
 
 ## 4. Debugging retrospektifi
-
 - En değerli hata:
 - İlk yanlış hipotezim:
 - Kök nedeni bulduran kanıt:
-- Bir daha oluşmasını önleyecek aksiyon:
+- Regression / önleyici aksiyon:
 
-## 5. AI kullanım değerlendirmesi
-
-- AI'nın hızlandırdığı alanlar:
-- AI'ya gereğinden fazla bıraktığım alanlar:
+## 5. AI / Codex kullanım değerlendirmesi
+- Codex'in öğretmen olarak en faydalı olduğu alan:
+- Reviewer olarak yakaladığı boşluklar:
+- Benim yerime çözmeye yaklaştığı bir nokta oldu mu?
+- Kritik kodu gerçekten ben mi yazdım?
 - Anlamadan kabul ettiğim çıktı oldu mu?
 - Bir sonraki hafta uygulanacak kontrol:
 
 ## 6. Çalışma sistemi değerlendirmesi
+- 19 saatlik tempo sürdürülebilir miydi?
+- Hangi gün gereğinden yoğun veya hafifti?
+- Dokümantasyon yükü doğru muydu?
+- Hangi görev gereğinden kolay/zordu?
+- Hangi araç/ortam sorunu tekrarlandı?
 
-- Tempo sürdürülebilir miydi?
-- Günlük süre doğru muydu?
-- Dokümantasyon yükü fazla mıydı?
-- Hangi görevler gereğinden kolay/zordu?
-- Hangi araç veya ortam sorunu tekrarlandı?
-
-## 7. Teknik İngilizce değerlendirmesi
-
-- En güçlü beceri:
-- En zayıf beceri:
-- Tekrarlanan gramer hataları:
-- Yeni teknik ifadeler:
-- Week 002 konuşma hedefi:
-
-## 8. Week 002 için kararlar
-
+## 7. Week 002 için kararlar
 ### Devam ettirilecekler
-
 - 
-
 ### Değiştirilecekler
-
 - 
-
 ### Bırakılacaklar
-
 - 
-
 ### Ek güçlendirme görevleri
-
 - 
 
-## 9. Nihai karar
-
+## 8. Nihai karar
 - [ ] `proceed`
 - [ ] `proceed-with-reinforcement`
 - [ ] `repeat-critical-sections`
