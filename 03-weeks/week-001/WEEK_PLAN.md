@@ -4,101 +4,50 @@ week: 1
 phase: 0
 start_date: 2026-09-05
 end_date: 2026-09-12
-owner: Alperen
 required_hours: 19
 ---
 
-# Week 001 — Tanılama ve Python + Linux + Networking Baseline
+# Week 001 — Python + Linux + Networking + Git foundations
 
-## Haftanın ana yeterliliği
-Python object/reference/mutability/scope davranışlarını deneyle açıklamak; Linux process ve temel networking davranışını terminalden gözlemlemek; ilk system-design mental modelini oluşturmak.
+## Amaç ve başlangıç
+5 Eylül 2026 kickoff. 6 Eylül dinlenme/isteğe bağlı tekrar; gün numaraları öğrenme sırasıdır. Gerçek çalışma tarihi günlükte kaydedilir. 7 Eylül olması Day 01'in kanıtsız tamamlandığı anlamına gelmez.
 
-Bu hafta hız değil doğruluk ölçülür. İlk tahmin ve kritik uygulamalar kullanıcı tarafından yapılır. Codex yalnızca `CODEX_TEACHER_PROTOCOL.md` ve `AI_USAGE_PROTOCOL.md` doğrultusunda Teacher + Socratic Guide + Reviewer rolündedir.
+Hafta baseline'dır: bilinmeyeni sınamak yerine öğret, sonra gözlemle. [Teacher protocol](../../00-governance/CODEX_TEACHER_PROTOCOL.md) ve [concept-state](../../01-skill-matrix/concept-state.yaml) her oturum başında okunur. Kaydı olmayan konu UNKNOWN. Socratic sorgulama öğretimden sonra gelir. Kaynaklar: [aktif kartlar](../../12-resources/WEEK_001.md).
 
 ## Zaman bütçesi
-Zorunlu haftalık toplam **19 saattir**. Günlük dosyalardaki `estimated_hours` değerleri bu bütçenin kanonik dağılımıdır:
+| Gün | Plan tarihi | Required saat | Odak |
+|---|---|---:|---|
+| Day 01 | 2026-09-05 | 4 | Ortam, shell, Git, ilk Python |
+| Day 02 | 2026-09-07 | 2.5 | Object/identity/equality |
+| Day 03 | 2026-09-08 | 2.5 | Mutation/copy/debug |
+| Day 04 | 2026-09-09 | 2.5 | Scope/function/closure introduction |
+| Day 05 | 2026-09-10 | 3 | Veri yapısı ve küçük construction |
+| Day 06 | 2026-09-11 | 2.5 | Process/socket/HTTP bağlantısı |
+| Day 07 | 2026-09-12 | 2 | Assessment ve retrospective |
+| Toplam | | 19 | |
 
-| Gün | Tarih | Zorunlu süre | Odak |
-|---:|---|---:|---|
-| Day 01 | 5 Eylül | 4 saat | kickoff, environment, Git, Python/Linux/network baseline |
-| 6 Eylül | Pazar | 0 | dinlenme / opsiyonel hafif tekrar |
-| Day 02 | 7 Eylül | 2.5 saat | object, identity, equality |
-| Day 03 | 8 Eylül | 2.5 saat | mutability, copy, argument binding |
-| Day 04 | 9 Eylül | 2.5 saat | scope, namespace, closure |
-| Day 05 | 10 Eylül | 3 saat | data structures, dependency graph |
-| Day 06 | 11 Eylül | 2.5 saat | Linux, networking, first system context |
-| Day 07 | 12 Eylül | 2 saat | assessment, teach-back, retrospective |
-| **Toplam** | | **19 saat** | |
+İç bölüm süreleri günlük header ile tam eşittir. Açıklama, kaynak, test ve evidence bütçeye dahildir. Önemli öğrenme sonucu yetişmezse sonraki oturuma taşınır; aynı güne gizli ek yük yazılmaz. Yeni hafta bağımlı konular için prerequisite kapısını bekler.
 
-Docker çalışması bu hafta **opsiyonel bonus diagnostic**tir ve 19 saate dahil değildir. Docker teslimatı veya container bilgisi Week 001 geçiş koşulu değildir.
+## Kapsam sınıfları
+- REQUIRED: günlerin zorunlu temel deneyleri ve evidence.
+- OPTIONAL: seçilebilir diagnostic; ek süre ayrı, geçişi etkilemez.
+- STRETCH: ön koşullu derinleşme; sonraki Phase A haftasına taşınabilir.
+- REFERENCE: ihtiyaç halinde kaynak; bitirilecek ödev değildir.
 
-## Ana çalışma döngüsü
-Her ana konu şu sırayla işlenir:
+## REQUIRED kanıt ve geçiş
+1. Shell/program/PATH ve bir stdin/stdout/exit-status deneyi.
+2. Güvenli Git diff/index/commit modeline ilişkin kanıt ve runtime_probe.
+3. Identity/aliasing lab ve üç test.
+4. Mutation/copy lab, iki test ve debug journal.
+5. Scope/function lab, iki test; closure introduction kaydı (mastery şartı yok).
+6. Duplicate analyzer, üç test ve veri yapısı gerekçesi.
+7. Local HTTP process/port gözlemi, stop/restart ve recovery, küçük request-path diagramı ve iki failure mode.
+8. Day 07 bağımsız küçük varyant/iki test, kaynaklı açıklama, baseline, concept-state, assessment ve retrospective.
 
-**Explain → Predict → Build → Observe → Break → Debug → Test → Compare → Transfer → Teach Back**
+Mevcut kanıt tekrar kullanılabilir; her tablo için yeniden deney yapılmaz. Unknown araçlar önce öğretilir. Puanlanmamış konular null kalır. [Assessment standard](../../00-governance/ASSESSMENT_STANDARD.md) kararı belirler; her alanda 4/5 Week 001 şartı değildir.
 
-Bir görev yalnızca kod çalıştığı için tamamlanmış sayılmaz.
+## Ertelenen derinlik
+Docker, ayrı İngilizce kota, dependency scheduler/cycle detection, custom equality, deep-copy derinliği, late-binding ve tam enterprise integration mimarisi geçiş koşulu değildir. Bunlar ilgili Day dosyasında OPTIONAL/STRETCH/REFERENCE olarak sınırlandırılmıştır; ileride Phase A/B/E/I kapsamında tekrar açılır.
 
-## Haftanın zorunlu teorik konuları
-- Python object / name binding / identity / equality
-- mutability, rebinding, shallow/deep copy
-- function argument binding
-- namespace, LEGB, closure, late binding
-- list/dict/set/deque ve temel Big-O sezgisi
-- dependency graph, in-degree ve cycle detection
-- Linux process, PID, signal, `/proc`, file descriptor
-- loopback, socket, port, TCP ve HTTP ilişkisi
-- trust boundary ve temel failure-mode düşüncesi
-
-## Zorunlu laboratuvarlar
-1. runtime/object identity deneyleri
-2. mutability/copy debugging
-3. closure/late-binding debugging
-4. duplicate analyzer
-5. dependency scheduler + cycle detection
-6. Linux process/signal gözlemi
-7. loopback TCP/HTTP gözlemi
-8. ilk system context diagram
-9. mini kapalı-kaynak değerlendirme
-
-## Opsiyonel bonus
-- Docker lifecycle diagnostic
-- ek İngilizce teknik yazı/ses kaydı
-- ekstra benchmark
-
-Opsiyonel çalışmalar zorunlu teslimatların önüne geçmez.
-
-## Zorunlu kanıtlar
-- kullanıcı tarafından yazılmış kod commitleri
-- test çıktıları
-- terminal/system gözlemleri
-- en az bir debug-journal kaydı
-- tahmin → gerçek sonuç karşılaştırmaları
-- kendi cümleleriyle teach-back
-- baseline assessment
-- güncellenmiş skill matrix
-- Week 001 assessment
-- retrospective
-
-## Week 001 geçiş kriterleri
-Week 002'ye geçiş için:
-
-1. Python object/reference/mutability/scope temel mental modeli açıklanmalı.
-2. Kritik lab'lar kullanıcı tarafından yazılmış olmalı.
-3. En az bir yanlış varsayım debugging ile düzeltilmiş olmalı.
-4. Dependency scheduler cycle tespit edebilmeli.
-5. Linux process ve network gözlemleri belgelenmiş olmalı.
-6. Process → socket → TCP → HTTP zinciri açıklanabilmeli.
-7. İlk system context diagram ve en az üç failure mode üretilmiş olmalı.
-8. Assessment + retrospective + skill-matrix kanıtla güncellenmiş olmalı.
-
-**Docker bu kriterlerin parçası değildir.**
-
-## Değerlendirme yaklaşımı
-Geçiş otomatik değildir. Day 07 sonunda kanıta göre şu kararlardan biri verilir:
-
-- `proceed`
-- `proceed-with-reinforcement`
-- `repeat-critical-sections`
-
-Mastery seviyesi için uzun vadeli hedef 4/5'tir; Week 001 bir baseline haftasıdır ve her alanda 4/5 beklenmez.
+## Öğretmenin günlük sunumu
+Today (hedef/neden/ön koşul durumları/çıktı) → Teach → Mechanism → Example → Predict → tek Lab → Observe → Review → Teach Back → Evidence. Öğretmen açıklama örneğinin sonucunu gösterebilir; kullanıcı deneyi için çözümü yazmaz. Takvim ve checklist öğretimin yerine geçmez.

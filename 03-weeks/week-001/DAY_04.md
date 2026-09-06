@@ -5,39 +5,30 @@ date: 2026-09-09
 estimated_hours: 2.5
 ---
 
-# Day 04 — Scope, Namespace, Function Object ve Closure
+# Day 04 — Scope, function ve closure temeli
 
-## Günün amacı
-Python'da isim çözümleme zincirini, function object davranışını ve closure mekanizmasını deneyle açıklamak.
+## Oturum sözleşmesi
+Öğretmen önce [concept-state](../../01-skill-matrix/concept-state.yaml) kaydını okur; kaydı olmayan ön koşulu UNKNOWN sayar. Today → Teach → Mechanism → Example → Predict → Lab → Observe → Review → Teach Back → Evidence sırası uygulanır. Her yeni komut/API/flag açıklanır; tek seferde yalnızca bir görev verilir. Kaynak okuma, açıklama, test ve kayıt aşağıdaki sürelere dahildir. Süre dolunca kalan required konu sonraki oturuma taşınır; tarihe göre atlanmaz. OPTIONAL/STRETCH ek süreleri ayrı kaydedilir ve geçiş koşulu değildir.
 
-## 1. Teori — 30 dakika
-Kendi cümlelerinle açıkla: namespace, scope, LEGB, `global`, `nonlocal`, closure, free variable ve late binding.
+Kaynak bölümü, deney ve artefact: [Week 001 kaynak kartları](../../12-resources/WEEK_001.md). Komutlar için [ilk kullanım kartları](../../12-resources/COMMAND_PRIMER.md); kartı sadece linklemek öğretim yerine geçmez.
 
-## 2. LEGB deneyleri — 40 dakika
-En az üç kontrollü deney yap:
-- local shadowing
-- `nonlocal` ile enclosing binding değişikliği
-- built-in shadowing riski
+## Today
+REQUIRED hedef: local/global isim çözümlemesini ve fonksiyonun değer olarak taşınmasını açıklamak. Ön koşullar: assignment, function çağrısı, argument/return. UNKNOWN ise önce öğret. Closure derinleşmesi temel scope'un yerine geçmez.
 
-`globals()` ve `locals()` çıktısını yalnızca gözlem amacıyla incele.
+## 1. Teach ve demonstration — 45 dakika
+Namespace isim→nesne eşlemesidir; scope ismin aranabildiği bağlamdır. LEGB'yi local/enclosing/global/builtins olarak tanıt. Function object, argument ve return ile küçük scope örneğini öğretmen açıklar. `global`/`nonlocal` kullanılacaksa farklarını önce öğret.
 
-## 3. Closure laboratuvarı — 45 dakika
-İki örnek yaz:
-- state tutan sayaç closure
-- konfigürasyon bağlayan validator factory
+## 2. Scope lab — 45 dakika
+Kullanıcı `src/week001/closures.py` içinde local shadowing ve bir fonksiyonun başka fonksiyona verilmesini deneyler. Tahmin ve observation sonrası isimlerin nerede çözümlendiğini çizdir. En az iki küçük davranış testi.
 
-Serbest değişkenlerin nereden çözümlendiğini açıkla.
+## 3. Closure bağlantısı ve debug — 40 dakika
+Öğretmen bir iç fonksiyonun enclosing binding'e erişimini çizim ve küçük demonstration ile tanıtır. Kullanıcı tek basit closure örneği yazar; function object prerequisite zayıfsa önce onu pekiştir ve closure'ı INTRODUCED olarak bırak. Yanlış scope varsayımını testle göster. İki farklı factory ve late-binding çözümü zorunlu değildir.
 
-## 4. Late-binding debugging — 25 dakika
-Loop içinde fonksiyon/lambda üret; beklenmeyen sonucu reproduce et. Factory function veya açık binding yaklaşımıyla düzelt ve regression testi yaz.
+## 4. Review ve evidence — 20 dakika
+Scope çizimi, kullanıcı lab'ı, iki test ve closure'ın hangi noktada kaldığı. Kaynak kartı PY-SCOPE. PROVEN yazmak için bağımsız açıklama/kullanım gerekir.
 
-## 5. Teach-back ve log — 10 dakika
-`global` ile `nonlocal` farkını bir kod örneği üzerinden açıkla ve daily log'a ekle.
+## REQUIRED evidence
+Scope/function lab, iki test, isim çözümleme açıklaması; closure için öğretim/gözlem kaydı yeterli, mastery gate değil.
 
-## Teslimatlar
-- [ ] LEGB deneyleri
-- [ ] İki closure örneği
-- [ ] Late-binding reproducer + fix
-- [ ] Regression testi
-- [ ] Teach-back notu
-- [ ] Daily log
+## OPTIONAL / STRETCH / REFERENCE
+STRETCH: `nonlocal` sayaç ve late-binding debugging, en fazla 25 dakika ek süre, önce öğret. REFERENCE: decorators; bu hafta sınavı yok.

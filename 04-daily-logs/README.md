@@ -22,3 +22,9 @@ Günlük log bir faaliyet listesi değildir. Şu dört öğeyi mutlaka içermeli
 4. Kod, test, terminal çıktısı ya da commit kanıtı
 
 Kanıtsız “öğrendim” ifadesi ilerleme kaydı sayılmaz.
+
+
+## Tarih ve sahiplik
+Gerçek çalışma tarihi kullanılır; 5 Eylül kickoff tarihi geçmiş günlerin yeniden adlandırılmasını gerektirmez. Ağustos kaydı historical pre-program kullanıcı evidence'ıdır; header/title eksikleri düzeltme bahanesiyle üzerine yazılmaz. Kickoff logundaki pending listeler plan kaydıdır; güncel REQUIRED kapsam Week plan'dadır.
+
+UNKNOWN için öğretim/demonstration önce, tahmin sonra gelir. Kullanıcı tahminsiz çalıştırdıysa bunu dürüstçe kaydet. AI reference notu yazılabilir fakat mastery evidence değildir. Kaynaklı kullanıcı etkileşimi ayrıca tutulur. [Oturum kaydı](2026-09/2026-09-07-session-evidence.md) mevcut resume noktasıdır.

@@ -26,3 +26,7 @@ Aşağıdaki durumlardan biri varsa debug journal kaydı açılır:
 ## Temel kural
 
 Çözüm olarak yalnızca değiştirilen kodu yazmak yeterli değildir. Mekanizma, kök neden ve önleyici kontrol açıklanmalıdır.
+
+
+## Öğretim ön koşulu
+UNKNOWN araç/kavram önce öğretilir; habersiz sınav veya açıklamasız debugging yok. Öğrenci denemesi, AI reference ve reviewer simülasyonu ayrı etiketlenir. Kanıtsız score null kalır. Week 001 kapsamı ve OPTIONAL/STRETCH ayrımı haftalık plandan alınır; ek görev/4 puan kapısı oluşturulmaz.

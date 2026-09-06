@@ -1,11 +1,22 @@
-schema_version: 2
-updated_at: 2026-09-05
+schema_version: 3
+updated_at: 2026-09-07
+concept_state_file: 01-skill-matrix/concept-state.yaml
+# target is a long-term objective; null means unassessed, not zero.
 scale:
   minimum: 0
   completion_threshold: 4
   maximum: 5
 
 skills:
+  git:
+    working_tree_index_commit: { score: null, target: 4, evidence: [] }
+    object_dag_refs: { score: null, target: 4, evidence: [] }
+    safe_remote_integration: { score: null, target: 4, evidence: [] }
+  backend_engineering:
+    api_contracts_auth_security: { score: null, target: 4, evidence: [] }
+    concurrency_async_queues: { score: null, target: 4, evidence: [] }
+    caching_redis: { score: null, target: 4, evidence: [] }
+    observability_failure_recovery: { score: null, target: 4, evidence: [] }
   computer_science:
     data_structures: { score: null, target: 4, evidence: [] }
     algorithms_and_complexity: { score: null, target: 4, evidence: [] }
@@ -85,6 +96,9 @@ skills:
     idempotency_delivery_semantics: { score: null, target: 4, evidence: [] }
 
   ai_engineering:
+    tokenization: { score: null, target: 4, evidence: [] }
+    reranking: { score: null, target: 4, evidence: [] }
+    ai_governance_enterprise_integration: { score: null, target: 4, evidence: [] }
     ml_math_foundations: { score: null, target: 4, evidence: [] }
     neural_networks_transformers: { score: null, target: 4, evidence: [] }
     llm_inference_and_serving: { score: null, target: 4, evidence: [] }

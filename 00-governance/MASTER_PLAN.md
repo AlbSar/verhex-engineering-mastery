@@ -1,7 +1,7 @@
 ---
 status: canonical
-version: 2.0.0
-updated_at: 2026-09-05
+version: 3.0.0
+updated_at: 2026-09-07
 program_start: 2026-09-05
 program_horizon: 12-month-core-plus-continuous
 ---
@@ -22,7 +22,7 @@ Hedef profil tek bir rol değildir. Program aşağıdaki bakış açılarını a
 
 Nihai hedef abstraction seviyeleri arasında iki yönlü hareket edebilmektir:
 
-hardware/kernel → process/runtime → network/data → service → distributed system → AI layer → platform → enterprise architecture → business solution
+hardware / kernel → operating system → runtime → language → networking → database → backend → distributed system → infrastructure → AI system → software architecture → system architecture → solution architecture → business problem
 
 ve gerektiğinde aynı zinciri tersine takip ederek kök nedene inebilmek.
 
@@ -207,7 +207,7 @@ Konular:
 - cost/performance trade-off
 
 Her vaka şu sırayla çözülür:
-requirement → constraints → workload → failure model → consistency → architecture → bottleneck → technology selection → cost/operations
+requirement → constraints → workload → failure model → consistency → latency → scale → architecture → technology selection → cost/operations. Everything is a trade-off.
 
 Gate:
 En az üç farklı büyük sistem vakasını capacity estimate, diagram, trade-off ve failure analysis ile savunabilmek.
@@ -355,15 +355,16 @@ Kaynaklar müfredat değildir; aktif hedefe bağlanmadıkça tüketilmez.
 Codex'in ana rolü Teacher + Socratic Guide + Reviewer'dır.
 
 Codex:
-- doğru soruları sorar,
-- mekanizmayı açıklar,
+- UNKNOWN konuyu önce öğretir ve minimal örnekle gösterir,
+- ancak öğretimden sonra doğru soruları sorar,
+- mekanizmayı katmanlı açıklar,
 - kaynakta ilgili bölümü bulur,
 - egzersiz/lab tasarlar,
 - kullanıcının kodunu review eder,
 - test/failure senaryosu önerir,
 - yanlış mental modeli tespit eder.
 
-Codex kritik öğrenme implementasyonunu varsayılan olarak yazmaz. Kullanıcı önce tahmin eder, tasarlar ve kodlar. Ayrıntılı kurallar `00-governance/CODEX_TEACHER_PROTOCOL.md` içindedir.
+Codex kritik öğrenme implementasyonunu varsayılan olarak yazmaz. UNKNOWN için önce öğretim/demonstration, sonra kullanıcı tahmini ve uygulaması gelir. PRACTICING için recall sonrası prediction uygundur. Ayrıntılı kurallar `00-governance/CODEX_TEACHER_PROTOCOL.md` içindedir.
 
 ## Mastery modeli
 
@@ -414,3 +415,41 @@ Deckent, Verhex işleri ve kişisel ürünler ileri seviye laboratuvar olarak ku
 Programın çekirdek 12 aylık yolunun sonunda şu iddia teknik kanıtlarla savunulabilmelidir:
 
 > Bir iş problemini ve constraint'lerini analiz eder; gerekli software, data, infrastructure ve AI katmanlarını seçer; Python, Go ve gerektiğinde TypeScript/Java ile güvenilir bileşenler geliştirir; Linux, PostgreSQL, container ve Kubernetes katmanlarını mekanizma seviyesinde anlayarak işletir; distributed system ve LLM/agent failure mode'larını debug eder; çözümü security, observability, cost ve operations boyutlarıyla System ve Solution Architecture seviyesinde tasarlar ve savunurum.
+
+
+## Durum ve kapsam otoritesi
+
+[Teacher protocol](CODEX_TEACHER_PROTOCOL.md) öğretim sırasını; [Assessment standard](ASSESSMENT_STANDARD.md) kanıt/puanı; [Week plan](../03-weeks/week-001/WEEK_PLAN.md) aktif required kapsamı belirler. Kaydı olmayan kavram UNKNOWN; öğretmeden sınanmaz. [Concept state](../01-skill-matrix/concept-state.yaml) yalnızca aktif kavramları tutar; uzun vadeli [skill matrix](../01-skill-matrix/skill-matrix.yaml) sayısal puanları kanıtla izler.
+
+12 aylık rota tüm alanlarda otomatik mastery vaadi değildir. Ön koşul veya kanıt eksikse süre sürekli eğitim dönemine uzar; haftalık 18–20 saat aşılmaz. Week 001 required 19 saat ve temel Python/Linux/network/Git; Docker diagnostic OPTIONAL, graph scheduler ve ileri closure STRETCH. Faz 0 bu haftanın baseline'ıdır; ayrıca sınav getirmez.
+
+## TypeScript ve Java uygulama hatları
+
+Go ikinci ana dil olarak Phase D'de kalır. TypeScript product/web hattı Python/backend ve Go temeli kurulduktan sonra Phase E–H içinde gerçek küçük API client/SDK + web ürün katmanı ile açılır; JS event loop, async ve type/runtime ayrımı öğretilir. Çıktı: typed client, contract test ve runtime açıklaması. Bu çalışma seçildiği haftada başka lab'ın yerini alır; gizli ek saat değildir.
+
+Java, JavaScript değildir. Enterprise specialization Phase I veya core sonrası ihtiyaçla açılır: JVM → object/type model → concurrency/GC → transaction → Spring boundaries. Çıktı: öğretilmiş bir servis davranışının Java karşılığı, concurrency/GC gözlemi ve transaction trade-off ADR. Java Go'nun önüne geçmez. Java/TypeScript kapsamı calendar quota ile değil prerequisite ve gerçek ihtiyaçla derinleşir.
+
+## Bağlı kapsam ve kanıt haritası
+
+| Alanlar | Prerequisite → faz → mekanizma lab'ı → kanıt |
+|---|---|
+| Computer Science, hardware/kernel, OS, data structures, algorithms | Phase A temel isim/byte/process → list/dict/graph ve complexity → test + açıklama; C memory/scheduler derinliği |
+| Python, Git, Linux/shell | A: runtime/object/function/iteration/async; Git snapshot/DAG; command/pipe/process → CLI/shell subset → kendi kodu, test, terminal/debug |
+| TCP/IP, UDP, DNS, HTTP, TLS, sockets | A process/I/O → echo/HTTP; C routing/NAT/TLS → packet/connection/failure evidence |
+| SQL/PostgreSQL, transactions/MVCC/index/query plan/locking | B relational/state → küçük API + transaction/concurrent update → query plan, isolation deneyi, rollback/test |
+| Backend, APIs, concurrency, async, queues, caching/Redis | B network/data → API ve KV/Redis subset; E queue/backpressure → load/failure/consistency evidence |
+| Go systems/network/concurrency | D Python/OS ön koşulu → aynı TCP service Go karşılığı → race/test/profile + runtime trade-off |
+| TypeScript/Node/product/web/SDK | E–H backend/Go sonrası seçili ürün sınırı → client/web katmanı → contract test ve JS runtime açıklaması |
+| Java/JVM/GC/Spring/enterprise | I veya continuous, Go sonrası → transactional service comparison → GC/concurrency gözlemi ve ADR |
+| Distributed systems, replication, consensus, consistency, availability/failure | E network/data/Go → replication ve partition deneyi → failure model, invariants, recovery ve capacity tasarımı |
+| Security, observability, reliability | A'dan itibaren process/permission; B auth/log; E trace/SLO/failure; H supply-chain → test/incident ve threat/operation notu |
+| Docker/namespaces/cgroups/container internals | C OS/process/memory → isolation lab/minimal container → namespace/resource observation + security sınırı |
+| Kubernetes, CI/CD, IaC, cloud-native | H C/D/E temeli → deployment/rollback/IaC lab → recovery, RBAC, capacity/cost kanıtı |
+| ML/math, neural networks, transformers, tokenization | F Python/data + linear algebra/probability → neural/attention mini model → test ve model/data sınırı açıklaması |
+| Embeddings, RAG, retrieval, reranking, inference/evaluation | F model/API → RAG+eval harness → retrieval/latency/quality hata analizi |
+| Tool use, agents, fine-tuning, MLOps | G F/E → tool authority/workflow ve dataset/serving lab → eval, recovery, cost ve audit |
+| AI governance, enterprise AI integration | G/I auth/data/eval → yetki/veri sınırı ve kontrollü integration → risk/approval/evidence/rollback ADR |
+| Software/system/solution architecture | E temelleri → I business requirement/capacity/cost → kontrollü capstone → diagrams, ADR, test, operations, business trade-off |
+| Production source reading | Aktif kavram → Linux primary + gerektiğinde seçili codebase → tek entry/call/data/test yolu → versioned source note ve lab karşılaştırması |
+
+Bu tablo yeni ödev listesi değildir; fazlar arası ön koşul ve kanıt bağlantısıdır. [Resource flow](../12-resources/README.md) her aktif lab için belirli bölüm ve artefact seçimini zorunlu kılar. Gerçek Verhex/Deckent transferi kontrollü lab sonrası olur; deney kodu production'a otomatik taşınmaz.

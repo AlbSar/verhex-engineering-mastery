@@ -11,11 +11,13 @@ retrospective_date: 2026-09-12
 | Metrik | Plan | Gerçekleşen | Fark |
 |---|---:|---:|---:|
 | Toplam zorunlu çalışma süresi | 19 saat | | |
-| Kodlama/lab | ~8 saat | | |
-| Linux/network/system observation | ~3 saat | | |
-| Test/debugging | ~3 saat | | |
-| Dokümantasyon/teach-back | ~3 saat | | |
-| Ortam/Git başlangıcı | ~2 saat | | |
+| Day 01 | 4 saat | | |
+| Day 02 | 2.5 saat | | |
+| Day 03 | 2.5 saat | | |
+| Day 04 | 2.5 saat | | |
+| Day 05 | 3 saat | | |
+| Day 06 | 2.5 saat | | |
+| Day 07 | 2 saat | | |
 | Docker diagnostic | opsiyonel bonus | | |
 
 ## 2. En önemli öğrenmeler
@@ -70,3 +72,15 @@ retrospective_date: 2026-09-12
 - [ ] `repeat-critical-sections`
 
 ### Gerekçe
+
+
+## Öğretim kalitesi ve kapsam
+- UNKNOWN kavrama açıklamadan tahmin/quiz istendi mi? Somut örnek ve düzeltme:
+- Yeni komut/flag önce tanıtıldı mı?
+- Teach → demonstration → prediction sırası korundu mu?
+- OPTIONAL/STRETCH required kapıya sızdı mı?
+- Gerçek required/optional saatler ve taşınan görevler:
+- Concept state önce/sonra, kaynak ve gerekçe:
+- AI notu ile kullanıcı açıklaması ayrımı:
+
+Karar tek kanonik [Assessment](ASSESSMENT.md) ile aynı olmalıdır; farklı ikinci karar üretme.

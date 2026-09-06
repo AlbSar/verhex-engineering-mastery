@@ -5,49 +5,30 @@ date: 2026-09-07
 estimated_hours: 2.5
 ---
 
-# Day 02 — Object, Identity, Equality ve Reference Semantics
+# Day 02 — Python object, identity ve equality
 
-## Günün amacı
-Python'da isimlerin nesnelere nasıl bağlandığını; identity, equality ve aliasing farkını deneyle açıklamak.
+## Oturum sözleşmesi
+Öğretmen önce [concept-state](../../01-skill-matrix/concept-state.yaml) kaydını okur; kaydı olmayan ön koşulu UNKNOWN sayar. Today → Teach → Mechanism → Example → Predict → Lab → Observe → Review → Teach Back → Evidence sırası uygulanır. Her yeni komut/API/flag açıklanır; tek seferde yalnızca bir görev verilir. Kaynak okuma, açıklama, test ve kayıt aşağıdaki sürelere dahildir. Süre dolunca kalan required konu sonraki oturuma taşınır; tarihe göre atlanmaz. OPTIONAL/STRETCH ek süreleri ayrı kaydedilir ve geçiş koşulu değildir.
 
-Codex öğretmen ve reviewer'dır. Önce kullanıcı tahmin eder ve kodu yazar; Codex daha sonra mental model ve test boşluklarını inceler.
+Kaynak bölümü, deney ve artefact: [Week 001 kaynak kartları](../../12-resources/WEEK_001.md). Komutlar için [ilk kullanım kartları](../../12-resources/COMMAND_PRIMER.md); kartı sadece linklemek öğretim yerine geçmez.
 
-## 1. Teori — 35 dakika
-Kendi cümlelerinle tanımla: object, name binding, identity, equality, type, aliasing.
+## Today
+REQUIRED hedef: isim ile nesneyi, aynı nesne ile eşit değeri ayırmak. Ön koşullar: Day 01 Python çalıştırma, literal, liste, assignment, print. UNKNOWN varsa önce öğret; tarih Day 02'yi otomatik açmaz.
 
-Cevapla:
-> `a = b` nesne kopyalar mı, yoksa yeni bir name binding mi oluşturur?
+## 1. Teach ve demonstration — 40 dakika
+Object/type/value, name binding, identity ve equality modelini öğret. `=` isim bağlar; kopyalama garantisi vermez. `is` identity, `==` equality karşılaştırır. `id()` ve `type()` sonuçlarının neyi gösterdiğini açıkla. Önce küçük bir liste çizimi ve sonucu açıklanan örnek göster. CPython interning davranışını dil garantisi olarak öğretme.
 
-## 2. Çekirdek deneyler — 60 dakika
-`object_identity.py` içinde en az üç deney yap:
+## 2. Guided lab — 55 dakika
+Kullanıcı `src/week001/object_identity.py` içinde eşit ayrı listeler ve aynı listeye bağlı iki isim kurar. PRACTICING aliasing için kısa recall sonrası tahmin uygundur; UNKNOWN ise önce gösterim. Her seferinde tek değişiklik ve gözlem.
 
-1. Equal ama identical olmayan iki liste.
-2. Aynı nesneye bağlanan iki isim ve mutation etkisi.
-3. Immutable bir değerin rebinding sonrası identity davranışı.
+## 3. Test ve failure — 35 dakika
+`assert` ve pytest önceden kurulmamışsa tanıt. Ayrı ama eşit listeler, aynı nesne ve rebinding için üç küçük test. Yanlış `is`/`==` seçiminin bir testte yarattığı hatayı açıklat. Kritik test/kod kullanıcı tarafından yazılır.
 
-Her deney için çalıştırmadan önce tahmin yaz; sonra sonucu ve farkın nedenini kaydet.
+## 4. Review ve evidence — 20 dakika
+İsim→nesne çizimi, bir tahmin farkı, test çıktısı ve kendi açıklaması. Kaynak kartı PY-OBJECT.
 
-Not: interning veya CPython optimizasyonu görürsen bunu Python dil garantisi olarak genelleme.
+## REQUIRED evidence
+Object identity lab, üç test, alias/rebinding açıklaması ve günlük bağlantısı.
 
-## 3. Test — 35 dakika
-En az 4 pytest testi yaz:
-- equal / not identical
-- same-object alias
-- immutable rebinding
-- custom `__eq__` veya mutable side effect
-
-## 4. Teach-back ve log — 20 dakika
-Kendi cümlelerinle şu cümleyi açıkla:
-> Two names can refer to the same object; two different objects can still be equal.
-
-Daily log'a yanlış tahminlerini ve düzeltilen zihinsel modeli ekle.
-
-## Teslimatlar
-- [ ] `object_identity.py`
-- [ ] Tahmin/sonuç kaydı
-- [ ] En az 4 test
-- [ ] Teach-back notu
-- [ ] Daily log
-
-## Geçiş kontrolü
-`is` ile `==` farkını implementation detail'e yaslanmadan açıklayabilmelisin.
+## OPTIONAL / STRETCH / REFERENCE
+STRETCH: custom `__eq__` yalnızca class/method ön koşulları öğretildiyse, en fazla 20 dakika ek süre. REFERENCE: CPython object implementation, henüz zorunlu değil.

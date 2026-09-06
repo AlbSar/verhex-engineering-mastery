@@ -27,9 +27,17 @@ Sürdürülebilir hedef:
 - hafta sonu 4–5 saat derin çalışma
 - haftalık yaklaşık 18–20 saat
 
-Her konu için temel döngü:
+Öğretim konu durumuna göre seçilir:
 
-**Explain → Predict → Build → Observe → Break → Debug → Test → Compare → Transfer → Teach Back**
+- UNKNOWN: **Teach → Demonstrate → Predict → Practice → Observe → Explain → Review**.
+- PRACTICING: Recall → Predict → User builds → Test → Break → Debug → Review → Production comparison.
+- ADVANCED: Problem → Constraints → User design → Trade-offs → Failure injection → Production source → Architecture review.
+
+> Never ask the learner to interpret, predict, debug, or use a concept, command, API, tool, flag, protocol, or abstraction that has not first been taught or explicitly established as prior knowledge.
+
+> Socratic questioning is a reinforcement technique, not a substitute for instruction.
+
+Aktif durumlar: [concept-state.yaml](01-skill-matrix/concept-state.yaml). Bilinmeyen kavramlarda önce öğretim; yaygın komutlar da istisna değildir.
 
 ## Codex'in rolü
 
@@ -76,10 +84,12 @@ Fazlar kesin tarihli kurs modülleri değildir. Evidence yetersizse uzar; güçl
 
 ## Aktif çalışma döngüsü
 
-**Week 001 — 5–12 Eylül 2026**  
-**Odak: Python + Linux + Networking baseline**
+**Week 001 — 5–12 Eylül 2026**
+**Odak: Python + Linux + Networking + Git baseline; 19 required saat**
 
-- Takip issue'su: [#1 — Week 001 Tanılama ve Python Çalışma Modeli](https://github.com/AlbSar/verhex-engineering-mastery/issues/1)
+Plan tarihleri ilerleme kanıtı değildir. Aktif resume noktası Day 01 shell akışı: [session evidence](04-daily-logs/2026-09/2026-09-07-session-evidence.md). Docker OPTIONAL; graph scheduler ve ileri closure STRETCH. [Aktif kaynak kartları](12-resources/WEEK_001.md).
+
+- Tarihsel takip: GitHub issue #1; erişim audit sırasında doğrulanamadı. Aktif kapsam ve durum bu repodaki haftalık plan ve evidence dosyalarıdır.
 - Haftalık plan: [`03-weeks/week-001/WEEK_PLAN.md`](03-weeks/week-001/WEEK_PLAN.md)
 - Günlük görevler: [`DAY_01`](03-weeks/week-001/DAY_01.md) · [`DAY_02`](03-weeks/week-001/DAY_02.md) · [`DAY_03`](03-weeks/week-001/DAY_03.md) · [`DAY_04`](03-weeks/week-001/DAY_04.md) · [`DAY_05`](03-weeks/week-001/DAY_05.md) · [`DAY_06`](03-weeks/week-001/DAY_06.md) · [`DAY_07`](03-weeks/week-001/DAY_07.md)
 - Baseline: [`01-skill-matrix/baseline-assessment.md`](01-skill-matrix/baseline-assessment.md)
@@ -93,12 +103,12 @@ Fazlar kesin tarihli kurs modülleri değildir. Evidence yetersizse uzar; güçl
 - `03-weeks` — haftalık execution planları
 - `04-daily-logs` — günlük öğrenme kayıtları
 - `05-labs` — kontrollü deneyler
-- `06-verhex-products` — gerçek proje transferleri
+- `06-verhex-products` — planlanan gerçek proje transfer alanı (henüz oluşturulmadı)
 - `07-english` — teknik İngilizce çıktıları
-- `08-adr` — mimari kararlar
+- `08-adr` — planlanan mimari karar alanı (henüz oluşturulmadı)
 - `09-debug-journal` — root-cause kayıtları
 - `10-assessments` — değerlendirmeler
-- `11-portfolio` — kanıtlanmış çıktılar
+- `11-portfolio` — planlanan kanıtlanmış çıktı alanı (henüz oluşturulmadı)
 - `12-resources` — doğrulanmış kaynak haritası
 
 ## Başarı standardı
@@ -112,3 +122,7 @@ Programın temel amacı Codex'in daha çok kod yazması değil, kullanıcının 
 ## Durum
 
 `active / foundations / week-001` — program 5 Eylül 2026 itibarıyla yürürlüktedir.
+
+## Öğretim kalite kontrolü
+
+[Audit ve onarım kaydı](10-assessments/CURRICULUM_AUDIT_2026-09-07.md) · [Üç öğretim kabul senaryosu](10-assessments/TEACHING_ACCEPTANCE.md). Repo bakım doğrulaması: `python3 scripts/audit_curriculum.py`; Python 3 ve PyYAML kullanan bu bakım kontrolü öğrencinin lab/test evidence'ı değildir.

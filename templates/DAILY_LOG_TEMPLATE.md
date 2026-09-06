@@ -14,7 +14,7 @@ hours_spent: 0
 
 ## Başlangıç tahminlerim
 
-Çalıştırmadan veya kaynağa bakmadan önce ne olacağını düşündüm?
+Önce öğretim/demonstration veya açık prior knowledge; sonra deneyden önce ne olacağını düşündüm? UNKNOWN konuda öğretimden önce tahmin zorunlu değildir.
 
 ## Öğrendiklerim
 
@@ -80,3 +80,14 @@ Bu bilgi gerçek bir Verhex ürünü veya müşteri sistemi içinde nerede kulla
 ## Açık sorular
 
 ## Yarın yapılacak ilk iş
+
+
+## Öğretim ve evidence kaynağı
+- Aktif concept / knowledge_state önce ve sonra:
+- UNKNOWN ise önce açıklanan mekanizma, komut/API/flag ve minimal örnek:
+- Öğretim sonrası tahmin (alınmadıysa alınmadı yaz):
+- Kaynak + belirli bölüm + öğrenme hedefi + deney:
+- Öğrenci çıktısı / AI reference / yardım düzeyi:
+- Kullanıcının kendi açıklaması veya kaynaklı sözlü/chat açıklaması:
+- REQUIRED süre / OPTIONAL-STRETCH süre / taşınan görev:
+- Sonraki tek görev ve prerequisite:

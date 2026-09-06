@@ -5,85 +5,32 @@ date: 2026-09-11
 estimated_hours: 2.5
 ---
 
-# Day 06 — Linux, Network ve İlk Sistem Tasarımı Tanılaması
+# Day 06 — Process, socket ve HTTP bağlantısı
 
-## Günün amacı
-Bir uygulamanın process, port, signal ve network seviyesinde nasıl yaşadığını gözlemlemek; ilk sistem bağlamını çizmek.
+## Oturum sözleşmesi
+Öğretmen önce [concept-state](../../01-skill-matrix/concept-state.yaml) kaydını okur; kaydı olmayan ön koşulu UNKNOWN sayar. Today → Teach → Mechanism → Example → Predict → Lab → Observe → Review → Teach Back → Evidence sırası uygulanır. Her yeni komut/API/flag açıklanır; tek seferde yalnızca bir görev verilir. Kaynak okuma, açıklama, test ve kayıt aşağıdaki sürelere dahildir. Süre dolunca kalan required konu sonraki oturuma taşınır; tarihe göre atlanmaz. OPTIONAL/STRETCH ek süreleri ayrı kaydedilir ve geçiş koşulu değildir.
 
-Docker bu hafta **opsiyonel bonus diagnostic**tir. Week 001 geçiş koşulu değildir.
+Kaynak bölümü, deney ve artefact: [Week 001 kaynak kartları](../../12-resources/WEEK_001.md). Komutlar için [ilk kullanım kartları](../../12-resources/COMMAND_PRIMER.md); kartı sadece linklemek öğretim yerine geçmez.
 
-## 1. Linux process deneyi — 45 dakika
-Bir Python HTTP server başlat ve başka terminalden gözlemle:
+## Today
+REQUIRED hedef: bir local HTTP isteğinin process/socket/TCP/HTTP yolunu gözlemek. Ön koşullar: terminal/shell, program başlatma, argüman, stdout. Socket, PID, fd, HTTP, `ps`, `ss`, `curl`, `kill` bilgisi varsayılmaz.
 
-```bash
-python -m http.server 8080
-ps aux | grep http.server
-pgrep -af http.server
-ls -l /proc/<PID>/fd
-cat /proc/<PID>/status
-kill -TERM <PID>
-```
+## 1. Teach ve minimal model — 45 dakika
+Process çalışan program örneğidir; PID kimliğidir. File descriptor process'in açık I/O kaynaklarına erişim numarasıdır. Socket ağ iletişimi uç noktasıdır; bind yerel adres/port seçer, listen bağlantı bekler, accept bağlı socket verir. TCP byte stream taşır; HTTP request/response bu byte'lara anlam verir. İlk olarak client → loopback → server çizimi göster.
+Komut kartlarıyla `python -m http.server 8080 --bind 127.0.0.1`, `ps -p PID -o pid,comm`, `ss -lnt`, `curl -v`, `kill -TERM PID` ve gerekirse `ls -l /proc/PID/fd` tanıtılır. PID metni gerçek gözlemlenen kimlikle değiştirilir; tahmin edilmez.
 
-Açıkla:
-- PID
-- file descriptor
-- process environment
-- SIGTERM vs SIGKILL
+## 2. Lab ve observation — 50 dakika
+Kullanıcı yalnızca lab klasöründe bir terminalden loopback HTTP server başlatır; ikinci terminalden port ve HTTP isteğini gözler. Server çalışırken önce başarılı `curl` kanıtı alınır. PID bir kez öğretildikten sonra server'ın PID'si gözlemlenir; `/proc` fd gösterimi öğretmen eşliğinde yapılır.
+Kaydet: dinleyen adres/port, HTTP status, server logu ve bir fd örneği. API çağrılarının gerçek implementation'ını yazma Phase A'nın sonraki lab'ıdır. Kaynak kartı NET-PROC.
 
-## 2. Network deneyi — 35 dakika
-```bash
-ss -lntp
-curl -v http://127.0.0.1:8080
-getent hosts localhost
-ip addr
-ip route
-```
+## 3. Failure ve recovery — 25 dakika
+Öğrenci yalnızca kendi lab server'ına SIGTERM gönderir, sonra aynı isteği tekrarlar. Önce beklenen bağlantı hatasını tahmin eder; çıkış kodu ve mesajı gözler. Yeniden server başlatıp aynı isteğin düzelmesini doğrular. Böylece sunucu kapalıyken yanlışlıkla başarı bekleyen eski sıra ortadan kalkar.
 
-Açıkla:
-- loopback
-- bind address
-- listening socket
-- client connection
-- DNS çözümleme
-- host/WSL network sınırı
+## 4. Hafif system context ve evidence — 30 dakika
+Client → local service → response diyagramı; process ölümü, port çakışması ve bağlantı hatasından iki failure mode. Requirement → constraints → workload → failure model → consistency → latency → scale → architecture → technology selection sırasını küçük ölçekte tanıt. Henüz queue/Kubernetes/enterprise gateway seçtirme. Kaynak kartı DESIGN-INTRO. Log, diagram ve teach-back kaydet.
 
-## 3. Sistem tasarımı — 55 dakika
-İlk bağlam diyagramını hazırla:
+## REQUIRED evidence
+Process/port/HTTP gözlemi, stop/restart failure ve recovery, küçük request-path diagramı, iki failure mode.
 
-> Müşteri ortamında IFS/Oracle ile cloud LLM arasında çalışan Verhex Enterprise AI Integration Node
-
-Minimum bileşenler:
-- ERP/Oracle trust boundary
-- integration node
-- connector/listener
-- AuthN/AuthZ
-- tool execution
-- audit log
-- model gateway
-- secret store
-- monitoring
-- human approval
-
-Cevapla:
-1. Trust boundary nerede?
-2. Credential nerede tutulmalı?
-3. Hangi işlemler read-only başlamalı?
-4. En kritik üç failure mode nedir?
-5. Cloud model erişimi kesilirse nasıl degrade olmalı?
-
-## 4. Teach-back ve log — 15 dakika
-Process → socket → TCP → HTTP → application zincirini kendi cümlelerinle açıkla.
-
-## Opsiyonel bonus — Docker diagnostic (en fazla 45 dakika, haftalık 19 saate dahil değil)
-Vakit ve enerji varsa tek bir container çalıştırıp image/container, main process ve port publish ilişkisini gözlemle. Bu bölüm tamamlanmazsa Week 001 geçişini etkilemez.
-
-## Zorunlu teslimatlar
-- [ ] Process/signal gözlemi
-- [ ] Network gözlemi
-- [ ] İlk sistem bağlam diyagramı
-- [ ] Üç failure mode
-- [ ] Teach-back notu
-- [ ] Daily log
-
-## Opsiyonel teslimat
-- [ ] Docker lifecycle kısa notu
+## OPTIONAL / STRETCH / REFERENCE
+OPTIONAL: Docker diagnostic, en fazla 30 dakika ek süre; image/container/port publish önce öğretilir. Docker/container bilgisi geçiş koşulu değildir. STRETCH: DNS için `getent hosts localhost`, önce kartla öğretim, en fazla 10 dakika ek süre. REFERENCE: Linux `/proc` source path; henüz kernel kodu okuma ödevi yok.

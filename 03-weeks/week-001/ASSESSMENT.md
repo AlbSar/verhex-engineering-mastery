@@ -7,77 +7,46 @@ verdict: pending
 
 # Week 001 Assessment
 
-## Kanıt envanteri
+Yalnızca öğretilen REQUIRED kapsam değerlendirilir; UNKNOWN önce öğretim planına alınır. Bu tablo [Week plan](WEEK_PLAN.md) ile aynıdır, ek görev üretmez. [Standard](../../00-governance/ASSESSMENT_STANDARD.md) ve [concept-state](../../01-skill-matrix/concept-state.yaml) kullanılır.
 
-| Teslimat | Konum | Durum | Not |
-|---|---|---|---|
-| Ortam envanteri | | Bekleniyor | |
-| Object identity deneyleri | | Bekleniyor | |
-| Mutability/copy laboratuvarı | | Bekleniyor | |
-| Closure laboratuvarı | | Bekleniyor | |
-| Duplicate analyzer | | Bekleniyor | |
-| Dependency scheduler | | Bekleniyor | |
-| Linux/process/network deneyleri | | Bekleniyor | |
-| İlk system context diagram | | Bekleniyor | |
-| Mini CLI/fonksiyon değerlendirmesi | | Bekleniyor | |
-| Debug journal | | Bekleniyor | |
-| Docker diagnostic | | Opsiyonel | Week 001 geçiş şartı değil |
+| REQUIRED kanıt | Durum / yardım düzeyi | Konum |
+|---|---|---|
+| Ortam/shell ve Git modeli, runtime_probe + bir test | pending | |
+| Identity lab + üç test | pending | |
+| Mutation/copy + iki test + debug journal | pending | |
+| Scope/function + iki test; closure introduction | pending | |
+| Duplicate analyzer + üç test ve veri yapısı gerekçesi | pending | |
+| Process/HTTP stop/restart + recovery | pending | |
+| Küçük request diagramı + iki failure mode | pending | |
+| Day 07 bağımsız varyant + iki test ve açıklama | pending | |
+| Günlük/baseline/state/retrospective bağlantıları | pending | |
+
+Docker ve ayrı İngilizce OPTIONAL; scheduler/cycle detection ve late-binding STRETCH; production source REFERENCE. Hiçbiri geçiş şartı değildir.
 
 ## Puanlama
+| Alan | Ağırlık | 0–5 puan | Evidence |
+|---|---:|---|---|
+| Kavramsal doğruluk | 30 | pending | |
+| Kullanıcı kodu | 20 | pending | |
+| Test ve debugging | 20 | pending | |
+| Linux/network gözlemi | 15 | pending | |
+| Hafif system context | 10 | pending | |
+| Açıklama / evidence | 5 | pending | |
+| Toplam | 100 | pending | |
 
-| Alan | Ağırlık | Ham puan 0–5 | Ağırlıklı sonuç | Kanıt |
-|---|---:|---:|---:|---|
-| Kavramsal doğruluk | 30 | | | |
-| Kod kalitesi | 20 | | | |
-| Test ve debugging | 20 | | | |
-| Linux/network sistem gözlemi | 15 | | | |
-| System design düşüncesi | 10 | | | |
-| Dokümantasyon / teach-back | 5 | | | |
-| **Toplam** | **100** | | | |
+Formül sum(ağırlık × puan / 5); eksik puanda toplam pending. Bu puan mastery yerine geçmez; Week 001'de her alanda 4 gerekmez.
 
-## Kavramsal doğrulama
-
-### Güçlü zihinsel modeller
-- 
-
-### Düzeltilmesi gereken zihinsel modeller
-- 
-
-### Ezberlenen fakat mekanizması anlaşılmayan konular
-- 
-
-## Kod inceleme sonucu
-- Type tasarımı:
-- Error handling:
-- Mutability kontrolü:
-- Test kapsamı:
-- Okunabilirlik:
-- Production riskleri:
-
-## Debugging değerlendirmesi
-- Belirti/kök neden ayrımı:
-- Hipotez kalitesi:
-- Kanıt toplama:
-- Regression testi:
-
-## Sistem düşüncesi değerlendirmesi
-- Process / network mental model:
-- Trust boundary farkındalığı:
-- Failure-mode düşüncesi:
-- Mimari trade-off açıklaması:
+## Review
+- Correctness / kullanıcı implementasyonu:
+- Mental model / kendi açıklaması:
+- Runtime/OS observation:
+- Failure, test, recovery:
+- Production difference (seviyeye uygun):
+- AI reference ile bağımsız kanıt ayrımı:
 
 ## Week 002 kararı
-- [ ] `proceed`
-- [ ] `proceed-with-reinforcement`
-- [ ] `repeat-critical-sections`
+- [ ] proceed — required evidence mevcut, kritik prerequisite açığı yok.
+- [ ] proceed-with-reinforcement — sınırlı açık ve süreli telafi planı; bağımlı görevler açılmadan telafi.
+- [ ] repeat-critical-sections — kritik required evidence/ön koşul eksik, önce öğretim.
 
-### Karar gerekçesi
-
-### Week 002'de güçlendirilecek alanlar
-- 
-
-## Onay
-- Öğrenci öz değerlendirmesi:
-- Codex reviewer değerlendirmesi:
-- ChatGPT repo değerlendirmesi:
-- Nihai karar:
+Gerekçe, kaynaklar, sonraki tek öncelik, gerçek tarih ve reviewer:

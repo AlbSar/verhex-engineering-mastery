@@ -56,3 +56,12 @@ Hangi teknik veya operasyonel problem karar gerektiriyor?
 - Kaynak:
 
 ## İlgili kararlar ve commitler
+
+
+## Problemden teknolojiye
+Requirement → constraints → workload → failure model → consistency → latency → scale → architecture → technology selection. Everything is a trade-off.
+
+- Lab ve production ayrımı:
+- Alternatifin elenme nedeni:
+- Kullanıcı tasarımı / AI review / source path:
+- Gerçek projeye kontrollü transfer ve geri dönen öğrenme açığı:

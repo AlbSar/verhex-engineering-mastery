@@ -5,136 +5,43 @@ date: 2026-09-05
 estimated_hours: 4
 ---
 
-# Day 01 — Ortam Envanteri, Git ve Başlangıç Kaydı
+# Day 01 — Ortam, shell ve ilk Python deneyi
 
-## Günün amacı
-Çalışma ortamını varsayımlarla değil sürüm, kaynak ve çalışma çıktılarıyla doğrulamak; repository'yi yerel geliştirme akışına bağlamak ve Python + Linux + network için ilk gözlemlenebilir baseline'ı üretmek.
+## Oturum sözleşmesi
+Öğretmen önce [concept-state](../../01-skill-matrix/concept-state.yaml) kaydını okur; kaydı olmayan ön koşulu UNKNOWN sayar. Today → Teach → Mechanism → Example → Predict → Lab → Observe → Review → Teach Back → Evidence sırası uygulanır. Her yeni komut/API/flag açıklanır; tek seferde yalnızca bir görev verilir. Kaynak okuma, açıklama, test ve kayıt aşağıdaki sürelere dahildir. Süre dolunca kalan required konu sonraki oturuma taşınır; tarihe göre atlanmaz. OPTIONAL/STRETCH ek süreleri ayrı kaydedilir ve geçiş koşulu değildir.
 
-Codex bu oturumda öğretmen ve reviewer'dır. Kritik kodu kullanıcı yazar; Codex mekanizmayı açıklar, hipotezleri sorgular, diff/test review yapar ve yanlış zihinsel modelleri görünür kılar.
+Kaynak bölümü, deney ve artefact: [Week 001 kaynak kartları](../../12-resources/WEEK_001.md). Komutlar için [ilk kullanım kartları](../../12-resources/COMMAND_PRIMER.md); kartı sadece linklemek öğretim yerine geçmez.
 
-> **Zaman bütçesi:** Bu günün toplam zorunlu bütçesi 4 saattir. Alt bölüm süreleri üst sınırdır; kurulum hızlı biterse kalan süre derinleşme veya notlara aktarılır. 4 saat aşıldığında ek işler ertesi güne taşınır.
+## Today
+REQUIRED hedef: terminal/shell/program ayrımını ve Python'un nasıl başlatıldığını açıklamak; küçük bir Python dosyası çalıştırmak; Git çalışma alanını korumak. Neden: daha sonra runtime ve network hatalarının hangi katmanda olduğunu ayırt etmek.
+Ön koşullar: terminale erişim; dosya açma/kaydetme. Bunlar bile kurulmamışsa önce göster. Python syntax, PATH, Git index ve pipe bilgisi varsayılmaz. Ağ deneyinin ayrıntısı Day 06'dadır.
 
-## 1. Ortam envanteri — en fazla 40 dakika
+## 1. Öğretim ve ortam — 60 dakika
+Shell/program/PATH ve argüman kavramlarını basit model, teknik mekanizma ve tek örnekle öğret. Bir seferde `command -v python`, `python --version`, sonra gerekirse `uv --version` ve `git --version` açıkla. Versiyon sorgusu araç kurulumunun tümü veya mastery kanıtı değildir. Mevcut çalışan ortamı yeniden kurma.
 
-Windows PowerShell:
-```powershell
-wsl --status
-wsl --version
-```
+Observe: seçilen executable yolu ile sürüm çıktısını ayır. Tahmin sadece öğretimden sonra. Mevcut oturum kanıtı varsa tekrar komut maratonu yerine kısa review yap. Windows/WSL ayrımı ihtiyaç kadar anlatılır.
 
-WSL Ubuntu:
-```bash
-uname -a
-cat /etc/os-release
-python --version
-uv --version
-git --version
-docker --version
-docker compose version
-node --version
-npm --version
-free -h
-df -h
-nproc
-```
+## 2. Shell akışı — 35 dakika
+Argüman, exit status ve stdout/stdin modelini öğret. `printf`, `echo`, `$?`, `&&`, `||`, `|` ve `wc -l` kartları ilk kullanımda açıklanır. Tek küçük pipeline deneyi yap; mekanizma: üreticinin stdout'u kernel pipe üzerinden tüketicinin stdin'ine gider. Yeni komutları birbirine eklemeden önce her birini tanıt.
+Observe: metin çıktısı ile sayısal exit code farklıdır; `wc -l` newline sayar. Shell kaynak kodu, tüm PATH girdilerinin kökeni ve symlink derinleşmesi REFERENCE; günün odağını tüketmez.
 
-Kaydet: işletim sistemi, Python/uv/Git/Node sürümleri, CPU/RAM/disk görünümü ve eksik araçlar. Docker mevcutsa sürümü kaydet; yoksa Week 001 için zorunlu değildir.
+## 3. Git çalışma modeli — 30 dakika
+Working tree → index → commit snapshot → branch pointer ilişkisini öğret. `git status`, `git diff`, `git diff --cached`, `git log --oneline` seçeneklerini açıkla, sonra kullanıcı kendi değişikliğini incelesin. Daha önce klonlu repoyu klonlatma. Yerel/remote ayrışma varsa önce koruma planı; reset veya kör rebase yok.
 
-## 2. Repository çalışma akışı — en fazla 30 dakika
-Repository zaten klonluysa yeniden clone etme. Önce:
+## 4. Python ve lab alanı — 80 dakika
+Önce literal, isim bağlama, liste, `print()` ve program dosyasının nasıl yürütüldüğünü öğret. [Lab README](../../05-labs/python/week-001/README.md) içindeki mevcut `src/` ve `tests/` yapısını açıkla. `uv run` proje ortamı ile sistem Python'u arasındaki ayrımı öğret; packaging ayrıntıları sonraki faza kalabilir.
+Kullanıcı `src/week001/runtime_probe.py` içinde küçük isim/değer ve liste örneği yazar. Önce farklı bir minimal öğretmen örneği; sonra kullanıcı kendi örneği hakkında tahmin üretir. `type()`/`id()` kullanılacaksa önce tanıt; identity derinliği Day 02'de.
+pytest assertion ve test discovery önce açıklanır; tek küçük davranış testi yeterlidir. Ruff/mypy neyi kontrol eder gösterilir; tool kurulumu uzarsa kalan işler kaydedilip ertelenir.
 
-```bash
-git fetch origin
-git status
-git branch -vv
-git log --oneline --decorate --graph --all -12
-```
+## 5. Review ve evidence — 35 dakika
+Tek bir yanlış varsayım, gerçek terminal çıktısı, yazılan lab/test ve açıklama kaydedilir. Gerçek çalışma tarihini kullan; kickoff dosyasına geriye dönük başarı yazma. AI notları reference olarak ayrılır. Git staging/commit henüz bilinmiyorsa önce kartla öğret; sadece seçilen evidence dosyaları stage edilir, diff okunur, kullanıcı commit eder.
 
-Yerel branch remote'dan ayrışmışsa körlemesine reset/rebase yapma. Commit grafiğini incele ve kullanıcı çalışmalarını koruyan entegrasyon planı çıkar.
+## REQUIRED evidence
+- Ortam yolu/sürümü ve shell açıklaması.
+- Bir shell akışı tahmin/gözlemi ve açıklaması.
+- Git working tree/index/commit ayrımına ilişkin kanıt.
+- Kullanıcı runtime_probe örneği ve bir küçük test.
+- Gerçek tarihli günlük veya kaynaklı etkileşim kaydı.
 
-Kendi cümlelerinle açıkla: working tree, staging area, commit ve branch pointer.
-
-## 3. Python proje alanı — en fazla 40 dakika
-`05-labs/python/week-001/` altında çalışma alanını kendin kur. Minimum:
-
-```text
-week-001/
-├── README.md
-├── pyproject.toml
-├── src/
-└── tests/
-```
-
-pytest + Ruff ve seçilen type checker'ı doğrula. Codex proje dosyalarını senin yerine üretmez; yapı review yapar.
-
-## 4. Python + Linux + Network baseline — 75 dakika
-
-### Python
-`runtime_probe.py` dosyasını **kendin yaz**:
-- immutable + mutable örnek
-- iki ismin aynı nesneye bağlanması
-- `id()`, `type()`, `==`, `is`
-- çalıştırmadan önce en az üç tahmin
-
-### Linux
-```bash
-echo $$
-ps -fp $$
-cat /proc/$$/status | head -40
-ls -l /proc/$$/fd | head
-```
-
-Açıkla: shell neden process, `$$`, `/proc/<PID>` ve file descriptor.
-
-### Network
-Bir terminalde:
-```bash
-python -m http.server 8080 --bind 127.0.0.1
-```
-Başka terminalde:
-```bash
-ss -lntp | grep 8080
-curl -v http://127.0.0.1:8080/
-getent hosts localhost
-```
-
-Açıkla: loopback, port, listening socket, client/server ve TCP → HTTP ilişkisi.
-
-## 5. Daily log + teach-back — 45 dakika
-`04-daily-logs/2026-09/2026-09-05.md` içine gerçek sonuçları kaydet:
-- ortam
-- tahmin/gerçek farkları
-- Linux/network gözlemleri
-- hatalar
-- yanlış varsayımlar
-- açık sorular
-
-Kısa teach-back:
-> Process → socket → TCP → HTTP → application zinciri nasıl bağlanır?
-
-## 6. Commit — en fazla 10 dakika
-```bash
-git add .
-git diff --cached
-git commit -m "chore: record week 1 engineering baseline"
-```
-
-## Zorunlu teslimatlar
-- [ ] Ortam envanteri
-- [ ] Güvenli local/remote Git durum analizi
-- [ ] Python çalışma alanı
-- [ ] `runtime_probe.py` + tahmin/sonuç
-- [ ] Linux process gözlemi
-- [ ] Loopback HTTP/network gözlemi
-- [ ] Daily log
-- [ ] İlk anlamlı kullanıcı commit'i
-
-## Opsiyonel
-- [ ] Docker sürüm/kurulum kontrolü
-- [ ] Teknik İngilizce kısa notu
-
-## Gün sonu kontrolü
-1. Branch neden repository'nin tam kopyası değildir?
-2. `/proc` hangi bilgiyi nereden üretir?
-3. `python -m http.server` başladığında process, socket, port ve HTTP nasıl bağlanır?
-4. Python'da name → object modelini açıklayabilir misin?
+## OPTIONAL / STRETCH / REFERENCE
+OPTIONAL: Docker mevcutsa sürüm diagnostic, en fazla 15 dakika ek süre. STRETCH: CPU/RAM/disk envanteri, en fazla 15 dakika ek süre. REFERENCE: symlink ve shell source navigation; zorunlu gün bütçesine yeni görev eklemez.

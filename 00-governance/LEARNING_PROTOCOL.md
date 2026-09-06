@@ -1,103 +1,57 @@
 ---
 status: canonical
-version: 2.0.0
-updated_at: 2026-09-05
+version: 3.0.0
+updated_at: 2026-09-07
 ---
 
 # Learning Protocol
 
-## Amaç
+## Önce öğretim
 
-Her konuyu yalnızca kullanabilmek değil; mekanizmasını, sınırlarını, failure mode'larını, runtime/OS etkisini, gözlemlenebilirliğini, performans/güvenlik sonuçlarını ve production trade-off'larını anlayabilmek.
+> Never ask the learner to interpret, predict, debug, or use a concept, command, API, tool, flag, protocol, or abstraction that has not first been taught or explicitly established as prior knowledge.
 
-## Zorunlu öğrenme döngüsü
+> Socratic questioning is a reinforcement technique, not a substitute for instruction.
 
-Her konu mümkün olduğunca şu sırayla işlenir:
+> For unknown concepts the correct order is Teach → Demonstrate → Predict → Practice → Observe → Explain → Review.
 
-1. **Explain** — Nedir, hangi problemi çözer?
-2. **Predict** — Çalıştırmadan önce davranışı tahmin et.
-3. **Build** — Küçük ve kritik kısmı kendin uygula.
-4. **Observe** — Terminal, profiler, logs, tracing veya sistem araçlarıyla gerçekten ne olduğunu gör.
-5. **Break** — Hata, edge case, timeout, concurrency veya resource failure üret.
-6. **Debug** — Symptom → evidence → hypothesis → root cause zincirini kaydet.
-7. **Test** — Davranışı otomatik testlerle sabitle.
-8. **Compare** — Eğitim implementasyonu ile production çözümünü karşılaştır.
-9. **Transfer** — Gerçek projede nerede kullanıldığını ilişkilendir.
-10. **Teach Back** — Kendi cümlelerinle mekanizmayı yeniden anlat.
+Davranış otoritesi [Codex Teacher Protocol](CODEX_TEACHER_PROTOCOL.md); aktif durum kaydı [concept-state.yaml](../01-skill-matrix/concept-state.yaml).
 
-## On zorunlu soru
+## Öğrenme döngüleri
 
-1. Nedir?
-2. Hangi problemi çözer?
-3. Arkasında hangi mekanizma çalışır?
-4. Runtime veya işletim sistemi seviyesinde ne olur?
-5. Veri/state nerede tutulur?
-6. Nasıl gözlemlenir ve ölçülür?
-7. Nasıl kontrol edilir?
-8. Hangi failure mode'ları vardır?
-9. Hangi security/performance trade-off'ları vardır?
-10. Production'da ne zaman kullanılmalı veya kullanılmamalıdır?
+UNKNOWN: TEACH → SHOW → EXPLAIN MECHANISM → TINY EXAMPLE → PREDICT → USER RUNS → OBSERVE → USER EXPLAINS → REVIEW.
 
-## Bir konunun tamamlanma kriteri
+PRACTICING: RECALL → PREDICT → USER BUILDS → TEST → BREAK → DEBUG → REVIEW → PRODUCTION COMPARISON.
 
-Bir konu `mastered` sayılmadan önce mümkün olan bağlama göre aşağıdakilerin çoğu kanıtlanmalıdır:
+ADVANCED: PROBLEM → CONSTRAINTS → USER DESIGN → TRADE-OFF REVIEW → FAILURE INJECTION → PRODUCTION SOURCE → ARCHITECTURE REVIEW.
 
-- Kendi cümleleriyle teknik açıklama
-- Framework'süz veya düşük abstraction'lı küçük uygulama/deney
-- En az bir bozuk senaryoyu debug etme
-- Unit/integration veya uygun başka otomatik test
-- Terminal/runtime/OS gözlemi
-- Performance veya resource davranışı hakkında evidence
-- Security/failure risklerini açıklama
-- Production kullanımını ve alternatiflerini değerlendirme
-- Gerçek proje bağlantısı veya architecture case
-- Gerekli haftalarda kısa İngilizce teknik anlatım
+INTRODUCED rehberli deneyi sürdürür; PROVEN ön koşul olarak kullanılabilir; MASTERED 4+ çok yönlü kanıt gerektirir. Yeni alt kavram UNKNOWN ise ileri oturumda bile öğretime dönülür. Durum geçişleri kanıtla yapılır; kalıcı puan yalnızca [Assessment Standard](ASSESSMENT_STANDARD.md) ile verilir.
 
-## Mastery gate
+## Mekanizma derinliği
 
-- Level 0: bilmiyor
-- Level 1: terimleri tanıyor
-- Level 2: rehberle uyguluyor
-- Level 3: bağımsız uyguluyor
-- Level 4: debug/test/optimize ediyor ve trade-off açıklıyor
-- Level 5: tasarlıyor, production'da yönetiyor ve öğretiyor
+Önce basit model, sonra teknik mekanizma, OS/runtime/protocol, production sonucu ve gerektiğinde seçilmiş kaynak yolu. Konu ilerledikçe şu soruları yanıtla: nedir, hangi sorun için yaratıldı, altında ne olur, hangi veri yapıları vardır, nasıl gözlenir, bozulur ve debug edilir, trade-off ve production farkı nedir, gerçek sistemde nerede görülür? İlk oturuma tüm derinlikleri sıkıştırma.
 
-Level 4 altı `mastered` kabul edilmez. Salt okuma, video tamamlama veya AI çıktısını çalıştırma evidence değildir.
+## Kaynak akışı
 
-## AI/Codex kuralı
+ developer-roadmap → official / primary documentation → explanation → structured practice when useful → small experiment → build-your-own when high leverage → production implementation → own lab → real project transfer → evidence → reflection
 
-Codex varsayılan olarak Teacher + Reviewer'dır. Kritik öğrenme implementasyonu önce kullanıcı tarafından yapılır. AI kodu kabul edilmeden önce:
+Her atlanan opsiyonel adım gerekçelendirilir; kaynak okuma ders süresine dahildir. Ayrıntı ve aktif kartlar: [Resources](../12-resources/README.md). Kaynak listesini bitirmek başarı ölçüsü değildir.
 
-- davranışı tahmin edilir,
-- abstraction'ları açıklanır,
-- failure senaryoları çıkarılır,
-- testleri yazılır veya doğrulanır,
-- kullanıcı değişikliğin neden doğru olduğunu anlatır.
+## Construction ve production reading
 
-Detaylı protokol: `00-governance/CODEX_TEACHER_PROTOCOL.md`.
+Build-your-own öncesi hangi production mekanizmasının küçük modelini kurduğunu açıkla. CLI/shell/HTTP/TCP/KV/database/Redis/Git/container/interpreter/neural network/transformer adaydır; hepsini yapma. Ön koşullar ve fayda seçim nedenidir.
 
-## Kaynak tüketim kuralı
+Production kaynak okuma: soru → kavram → resmî doküman → seçilmiş subsystem/entry point → tek call/data path → ilgili test → mimari özet → kendi lab'ına dönüş. Linux ana referanstır. CPython/PostgreSQL/Redis/Git/Kubernetes/nginx/LLVM ancak aktif ihtiyaçta eklenir. Binlerce satır dökme; sürüm/commit ve incelenen yolu kaydet.
 
-Kaynak biriktirmek öğrenme değildir. Her kaynak aktif bir learning outcome, lab, assessment veya architecture case'e bağlanmalıdır.
-
-Tercih edilen sıra:
-
-roadmap → primary docs → structured lesson → build-from-scratch → production source code → real project
+Karşılaştırma: correctness, concurrency, durability, security, observability, performance, recovery. Lab'da olmayan garantileri açıkça yaz.
 
 ## Gerçek proje transferi
 
-Gerçek proje eğitim yerine geçmez; ancak kanıtı güçlendirir. Her transferde şu kayıt tutulur:
+LEARN → LAB → EXPLAIN → REAL PROJECT → FAILURE / TRADE-OFF → RETURN TO THEORY → DEEPEN.
 
-- kullanılan temel kavram,
-- production'da karşılaşılan gerçek constraint,
-- teoriden farklı çıkan davranış,
-- debug/decision evidence,
-- curriculum'a geri eklenmesi gereken yeni gap.
+Kontrollü lab önce gelir. Verhex/Deckent production reposuna deney kodu otomatik taşınmaz. Transfer kaydı: iş problemi, temel kavram, constraint, karar, risk, rollback ve geri dönen öğrenme boşluğu.
 
-## Debug protokolü
+## Kanıt ve reflection
 
-Her anlamlı hata için:
+Kod, test, terminal çıktısı, debug journal, benchmark, diagram, ADR, incident analizi ve kendi açıklaması kanıt olabilir. AI reference notu tek başına kanıt değildir. Kullanıcının kaynaklı etkileşimi ayrıca belirtilir. Kanıt yoksa `null`/not-proven; UNKNOWN konuya sınav veya otomatik sıfır puan yoktur.
 
-symptom → reproduction → observations → hypotheses → experiments → root cause → fix → regression test → lesson
-
-zinciri takip edilir. Sadece fix commit'i bırakmak yeterli değildir.
+Debug zinciri: symptom → reproduction → observations → hypotheses → experiments → root cause → fix → regression test → lesson. Yeni araç önce öğretilir. Week 001'de tüm konu başına production benchmark zorunlu değildir; uygun derinlik zaman bütçesi içinde seçilir.

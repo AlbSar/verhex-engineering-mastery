@@ -1,0 +1,46 @@
+schema_version: 1
+updated_at: 2026-09-07
+missing_concept_state: UNKNOWN
+allowed_states: [UNKNOWN, INTRODUCED, PRACTICING, PROVEN, MASTERED]
+policy: >-
+  Active concepts only. State controls teaching, not a numeric mastery score.
+  Transitions require a dated source and rationale. PROVEN requires independent
+  explanation and use; MASTERED additionally requires score >= 4 with evidence.
+  Unknown or unassessed is not an automatic zero. Regress state when needed.
+concepts:
+  shell_program_path:
+    knowledge_state: PRACTICING
+    source: 04-daily-logs/2026-09/2026-09-07-session-evidence.md
+    rationale: Guided command lookup and symlink observations; independent transfer still needed.
+  exit_status_and_conditionals:
+    knowledge_state: PRACTICING
+    source: 04-daily-logs/2026-09/2026-09-07-session-evidence.md
+    rationale: Predicted 2 then 0 and successful AND; OR misconception corrected with observation.
+  stdin_stdout_pipe:
+    knowledge_state: INTRODUCED
+    source: 04-daily-logs/2026-09/2026-09-07-session-evidence.md
+    rationale: Pipeline executed before the learner understood wc; requires teach-first guided practice.
+  wc_flags:
+    knowledge_state: INTRODUCED
+    source: 04-daily-logs/2026-09/2026-09-07-session-evidence.md
+    rationale: Name and flags explained; newline prediction and independent explanation pending.
+  python_list_basics:
+    knowledge_state: UNKNOWN
+    source: null
+    rationale: No independent evidence in repository; existing runtime_name test does not establish lists.
+  python_aliasing:
+    knowledge_state: UNKNOWN
+    source: null
+    rationale: Not established for this learner; acceptance simulation uses a separate hypothetical state.
+  python_decorators:
+    knowledge_state: UNKNOWN
+    source: null
+    rationale: Not taught; later Phase A topic, not Week 001 requirement.
+  git_index_commit:
+    knowledge_state: INTRODUCED
+    source: 04-daily-logs/2026-09/2026-09-07-session-evidence.md
+    rationale: Historical learner log mentions Git practice and weak understanding; not independent proof.
+  process_socket_http:
+    knowledge_state: UNKNOWN
+    source: null
+    rationale: Planned observations are not completed evidence.
