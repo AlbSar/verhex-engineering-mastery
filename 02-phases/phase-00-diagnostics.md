@@ -11,7 +11,7 @@ owner: Alperen
 
 ## Amaç
 
-Başlangıç seviyesini varsayımla değil, gözlemlenebilir kanıtlarla ölçmek; 36 haftalık program boyunca kullanılacak geliştirme, değerlendirme ve dokümantasyon sistemini kurmak.
+Başlangıç seviyesini varsayımla değil, gözlemlenebilir kanıtlarla ölçmek; 5 Eylül 2026'da başlayan 12 aylık çekirdek mastery programı ve sonrasında devam edecek sürekli mühendislik eğitimi boyunca kullanılacak geliştirme, değerlendirme ve dokümantasyon sistemini kurmak.
 
 Bu faz bir eleme sınavı değildir. Sonraki haftaların zorluk seviyesini doğru kalibre etmek için mevcut zihinsel modelleri, güçlü alanları ve teknik boşlukları görünür kılar.
 
@@ -19,9 +19,9 @@ Bu faz bir eleme sınavı değildir. Sonraki haftaların zorluk seviyesini doğr
 
 1. Python kodunu yalnızca yazabiliyor muyum, yoksa runtime davranışını açıklayabiliyor muyum?
 2. Bir problemi veri yapısı, karmaşıklık ve failure mode açısından parçalayabiliyor muyum?
-3. Linux, process, network ve container davranışını terminalden gözlemleyebiliyor muyum?
+3. Linux, process ve network davranışını terminalden gözlemleyebiliyor muyum?
 4. Bir hatayı rastgele değişikliklerle değil, hipotez ve kanıtla çözebiliyor muyum?
-5. AI tarafından üretilen kodu denetleyebiliyor muyum?
+5. AI tarafından üretilen kodu denetleyebiliyor muyum ve Codex'i öğretmen/reviewer rolünde tutabiliyor muyum?
 6. Teknik bir konuyu yazılı ve sözlü İngilizceyle aktarabiliyor muyum?
 
 ## Değerlendirme standardı
@@ -62,44 +62,31 @@ Kanıtlar:
 
 ### B. Algoritmik düşünme — 15 puan
 
-Ölçülecek başlıklar:
-
 - Problemi girdi, çıktı ve invariant olarak tanımlama
 - Big O sezgisi
 - List, set, dictionary, stack ve queue seçimi
 - Edge case üretimi
 - Basit dependency graph yaklaşımı
 
-Kanıtlar:
-
-- İki algoritma sorusu
-- Bir veri yapısı seçimi savunması
-- Karmaşıklık analizi
-
 ### C. Git ve mühendislik disiplini — 10 puan
 
 - Repository klonlama
-- Branch oluşturma
+- Branch kullanımı
 - Anlamlı commit üretme
 - Diff okuma
 - Revert ile reset farkını açıklama
 - Küçük bir pull request açıklaması yazma
 
-### D. Linux, network ve Docker — 20 puan
+### D. Linux ve networking — 20 puan
 
 - Process, PID, signal ve environment
-- File permission ve pipe
+- File permission, file descriptor, pipe ve redirect
+- `/proc` üzerinden process gözlemi
 - Port, socket, localhost ve DNS
-- Container ile sanal makine farkı
-- Image, layer, volume ve network
+- Basit TCP/HTTP bağlantısı
 - Temel gözlem komutları
 
-Kanıtlar:
-
-- Terminal komut çıktıları
-- Bir process gözlem deneyi
-- Bir port/network deneyi
-- Bir container lifecycle deneyi
+Docker bu haftada yalnızca mevcut baseline'ı görmek için opsiyonel gözlem alanıdır; container internals ve production containerization sonraki mastery fazlarında Linux temeli üzerine işlenecektir.
 
 ### E. Debugging ve sistem tasarımı — 15 puan
 
@@ -113,28 +100,21 @@ Kanıtlar:
 ### F. Teknik İngilizce — 15 puan
 
 - Reading: kısa resmî doküman parçası
-- Writing: 300 kelimelik teknik tanıtım
-- Speaking: 5 dakikalık teknik anlatım
+- Writing: teknik açıklama
+- Speaking: teknik anlatım
 - Vocabulary: terimleri bağlam içinde kullanma
-- Comprehension: okunan kaynağı kendi cümleleriyle özetleme
+- Comprehension: kaynağı kendi cümleleriyle özetleme
 
 ## Ortam doğrulama kontrol listesi
-
-Aşağıdaki bileşenler sürüm çıktılarıyla kanıtlanır:
 
 ```bash
 wsl --status
 python --version
-uv --version
 git --version
-docker --version
-docker compose version
-node --version
-npm --version
 code --version
 ```
 
-WSL içinde ayrıca:
+WSL içinde:
 
 ```bash
 uname -a
@@ -146,35 +126,39 @@ nproc
 
 Python araç zinciri:
 
-- Python 3.12 veya program boyunca seçilen kanonik sürüm
+- Program için seçilen kanonik Python 3.x sürümü
 - `uv`
 - Ruff
 - Pyright veya mypy
 - pytest
-- debugpy veya IDE debugger
+- debugger/debugpy
 
-Servis bağımlılıkları:
+Sonraki fazlarda eklenecek ana toolchain:
 
-- Docker
+- Go
 - PostgreSQL
-- Redis
+- Docker
+- Kubernetes
+- Node.js/TypeScript
+- Java/JVM (enterprise specialization fazında)
 
 ## Uygulama sırası
 
 1. Ortam envanteri çıkarılır.
-2. Python ve algoritma tanılaması AI yardımı olmadan tamamlanır.
-3. Linux, network ve Docker deneyleri yürütülür.
+2. Python ve algoritma tanılaması ilk denemede kritik çözüm AI'ya devredilmeden tamamlanır.
+3. Linux ve network deneyleri yürütülür.
 4. Debugging senaryosu çözülür.
-5. İngilizce yazılı ve sözlü teslimatlar hazırlanır.
-6. Kanıtlar `baseline-assessment.md` içine bağlanır.
-7. `skill-matrix.yaml` puanları kanıt bağlantılarıyla güncellenir.
-8. Haftalık retrospektif hazırlanır.
+5. İlk küçük system-design değerlendirmesi yapılır.
+6. İngilizce yazılı ve sözlü baseline hazırlanır.
+7. Kanıtlar `baseline-assessment.md` içine bağlanır.
+8. `skill-matrix.yaml` puanları kanıt bağlantılarıyla güncellenir.
+9. Haftalık retrospektif hazırlanır.
 
 ## Geçiş kriterleri
 
 Faz 0 tamamlanmış sayılmak için:
 
-- Tüm tanılama alanlarında kanıt üretilmiş olmalı.
+- Tüm aktif tanılama alanlarında kanıt üretilmiş olmalı.
 - Geliştirme ortamı tekrar kurulabilir biçimde belgelenmiş olmalı.
 - İlk günlük log ve debug journal kaydı yazılmış olmalı.
 - Skill matrix başlangıç puanları kanıtlarla doldurulmuş olmalı.
@@ -185,7 +169,8 @@ Faz 0 tamamlanmış sayılmak için:
 - `01-skill-matrix/baseline-assessment.md`
 - Güncellenmiş `01-skill-matrix/skill-matrix.yaml`
 - `03-weeks/week-001/` günlük teslimatları
-- İlk Python CLI laboratuvarı
+- İlk Python/Linux/network laboratuvarları
 - İlk debug journal kaydı
-- İngilizce teknik tanıtım
+- İlk system-design notu
+- İngilizce teknik baseline
 - Week 001 değerlendirmesi ve retrospektifi

@@ -2,114 +2,60 @@
 status: ready
 day: 5
 date: 2026-09-10
-estimated_hours: 5
+estimated_hours: 3
 ---
 
 # Day 05 — Veri Yapıları ve Algoritmik Tanılama
 
 ## Günün amacı
+Problemi doğru veri yapısıyla çözmek, karmaşıklığı açıklamak ve küçük bir dependency graph üzerinde cycle tespit etmek.
 
-Problemi doğru veri yapısıyla çözmek, çözüm karmaşıklığını açıklamak ve basit dependency graph üzerinde cycle tespit etmek.
+## 1. Veri yapısı seçimi — 35 dakika
+List, tuple, dict, set ve deque için şu soruları cevapla:
+- temel kullanım
+- membership maliyeti
+- sıra davranışı
+- hash gereksinimi
+- bir production örneği
 
-## 1. Veri yapısı seçimi — 60 dakika
+Heap bu hafta yalnızca kavramsal not seviyesindedir; zorunlu implementasyon yoktur.
 
-Aşağıdaki yapıların temel kullanımını ve maliyetlerini karşılaştır:
+## 2. Duplicate customer analyzer — 55 dakika
+Typed bir çözüm yaz. Şunları ele al:
+- boş input
+- eksik `customer_id`
+- duplicate yok / birden fazla duplicate
+- deterministic output
+- büyük veri için memory değerlendirmesi
 
-- list
-- tuple
-- dict
-- set
-- deque
-- heap
+En az 4 test yaz.
 
-Her biri için:
+## 3. Dependency scheduler — 70 dakika
+Kahn algoritmasıyla küçük görev-bağımlılık grafiği için çalışma sırası üret.
 
-- Erişim
-- Ekleme
-- Silme
-- Membership kontrolü
-- Sıra garantisi
-- Hash gereksinimi
-- Production kullanım örneği
-
-## 2. Duplicate customer analyzer — 75 dakika
-
-Bir kayıt listesinde tekrar eden `customer_id` değerlerini, tekrar sayılarını ve kaynak satırlarını döndüren typed bir çözüm yaz.
-
-Gereksinimler:
-
-- Boş input
-- Eksik `customer_id`
-- `None` değer
-- Farklı tipte kimlik
-- Büyük veri için memory değerlendirmesi
-- Deterministic output
-
-Testler:
-
-- Normal durum
-- Duplicate yok
-- Birden fazla duplicate
-- Bozuk kayıt
-- Büyük sentetik input
-
-## 3. Dependency scheduler — 90 dakika
-
-Bir görev-bağımlılık sözlüğünden çalışma sırası üret.
-
-Örnek:
-
-```python
-dependencies = {
-    "deploy": ["test", "build"],
-    "test": ["build"],
-    "build": [],
-}
-```
-
-Gereksinimler:
-
-- Kahn algoritması
-- In-degree tablosu
-- Deterministic queue sırası
-- Bilinmeyen dependency doğrulaması
-- Cycle detection
-- Custom `DependencyCycleError`
+Zorunlu özellikler:
+- in-degree
+- deterministic queue order
+- unknown dependency validation
+- cycle detection
+- özel cycle hatası
 
 Açıkla:
+- queue neden var?
+- cycle nasıl anlaşılır?
+- zaman/alan karmaşıklığı nedir?
 
-- Neden queue kullanılıyor?
-- Cycle nasıl tespit ediliyor?
-- Zaman ve alan karmaşıklığı nedir?
-- Graph çok büyürse hangi gözlem metrikleri gerekir?
+## 4. Kısa ölçüm ve teach-back — 20 dakika
+Küçük ve daha büyük iki sentetik input üzerinde süreyi gözlemle. Benchmark sonucu diye genelleme yapma; yalnızca gözlem kaydı tut.
 
-## 4. Benchmark — 30 dakika
-
-Küçük, orta ve büyük sentetik graph üret. Süreyi ölç ancak tek koşumu kesin performans sonucu gibi yorumlama.
-
-Kaydet:
-
-- Input boyutu
-- Node/edge sayısı
-- Süre
-- Bellek için yaklaşık değerlendirme
-
-## 5. İngilizce — 30 dakika
-
-Beş dakikalık İngilizce anlatım taslağı:
-
-> Why data-structure selection changes the performance and clarity of a solution.
+Şunu açıkla:
+> Veri yapısı seçimi neden hem performansı hem kodun açıklanabilirliğini değiştirir?
 
 ## Teslimatlar
-
-- [ ] Veri yapısı karşılaştırma tablosu
+- [ ] Veri yapısı karşılaştırma notu
 - [ ] Duplicate analyzer
+- [ ] En az 4 test
 - [ ] Dependency scheduler
-- [ ] Cycle regression testi
-- [ ] Karmaşıklık analizi
-- [ ] Benchmark notu
-- [ ] İngilizce anlatım taslağı
-
-## Geçiş kontrolü
-
-Dictionary membership ile list membership arasındaki ortalama karmaşıklık farkını ve bunun hangi varsayımlara dayandığını açıklayabilmelisin.
+- [ ] Cycle testi
+- [ ] Karmaşıklık açıklaması
+- [ ] Daily log

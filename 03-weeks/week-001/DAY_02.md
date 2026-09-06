@@ -2,105 +2,52 @@
 status: ready
 day: 2
 date: 2026-09-07
-estimated_hours: 4.5
+estimated_hours: 2.5
 ---
 
 # Day 02 — Object, Identity, Equality ve Reference Semantics
 
 ## Günün amacı
+Python'da isimlerin nesnelere nasıl bağlandığını; identity, equality ve aliasing farkını deneyle açıklamak.
 
-Python'da değişkenlerin nesneleri “saklamadığını”, isimlerin nesnelere bağlandığını deneylerle göstermek.
+Codex öğretmen ve reviewer'dır. Önce kullanıcı tahmin eder ve kodu yazar; Codex daha sonra mental model ve test boşluklarını inceler.
 
-## 1. Teori — 60 dakika
+## 1. Teori — 35 dakika
+Kendi cümlelerinle tanımla: object, name binding, identity, equality, type, aliasing.
 
-Kendi cümlelerinle tanımla:
+Cevapla:
+> `a = b` nesne kopyalar mı, yoksa yeni bir name binding mi oluşturur?
 
-- Object
-- Name binding
-- Identity
-- Equality
-- Type
-- Reference semantics
-- Aliasing
-- Garbage collection
+## 2. Çekirdek deneyler — 60 dakika
+`object_identity.py` içinde en az üç deney yap:
 
-Aşağıdaki soruya yazılı cevap ver:
+1. Equal ama identical olmayan iki liste.
+2. Aynı nesneye bağlanan iki isim ve mutation etkisi.
+3. Immutable bir değerin rebinding sonrası identity davranışı.
 
-> `a = b` ifadesi nesne kopyalar mı, yoksa isim bağlaması mı oluşturur?
+Her deney için çalıştırmadan önce tahmin yaz; sonra sonucu ve farkın nedenini kaydet.
 
-## 2. Deney seti — 90 dakika
+Not: interning veya CPython optimizasyonu görürsen bunu Python dil garantisi olarak genelleme.
 
-`object_identity.py` dosyasında en az şu deneyleri yap:
+## 3. Test — 35 dakika
+En az 4 pytest testi yaz:
+- equal / not identical
+- same-object alias
+- immutable rebinding
+- custom `__eq__` veya mutable side effect
 
-### Deney A — Identity ve equality
+## 4. Teach-back ve log — 20 dakika
+Kendi cümlelerinle şu cümleyi açıkla:
+> Two names can refer to the same object; two different objects can still be equal.
 
-```python
-a = [1, 2]
-b = [1, 2]
-c = a
-```
-
-Her çift için `==`, `is` ve `id()` sonuçlarını tahmin et; sonra çalıştır.
-
-### Deney B — Immutable yeniden bağlama
-
-Integer ve string üzerinde değişiklik sonrası `id()` davranışını gözlemle.
-
-### Deney C — Aliasing
-
-Aynı listeyi iki isim üzerinden değiştir ve yan etkiyi açıkla.
-
-### Deney D — Küçük integer/string interning
-
-Sonuçları genellemeden gözlemle. CPython optimizasyonunu dil garantisi gibi yorumlama.
-
-### Deney E — Nesne yaşam döngüsü
-
-`sys.getrefcount()` kullanarak referans sayımı hakkında kontrollü gözlem yap; fonksiyonun kendi geçici referans etkisini not et.
-
-## 3. Tahmin tablosu — 30 dakika
-
-Her deney için:
-
-| Deney | Çalıştırmadan önce tahmin | Gerçek sonuç | Farkın nedeni |
-|---|---|---|---|
-
-En az iki yanlış tahmin bulmak hedeflenir. Yanlış tahmin başarısızlık değil, görünür hâle gelen zihinsel modeldir.
-
-## 4. Test — 45 dakika
-
-En az 5 pytest testi yaz:
-
-- Equal ama identical olmayan iki liste
-- Aynı nesneyi gösteren iki isim
-- Immutable yeniden bağlama
-- Mutable yan etki
-- Custom sınıfta `__eq__` davranışı
-
-## 5. İngilizce — 30 dakika
-
-İngilizce 150–200 kelime:
-
-> Explain the difference between identity and equality in Python.
-
-Şu ifadeleri kullan:
-
-- refers to
-- evaluates to
-- object identity
-- semantic equality
-- implementation detail
+Daily log'a yanlış tahminlerini ve düzeltilen zihinsel modeli ekle.
 
 ## Teslimatlar
-
 - [ ] `object_identity.py`
-- [ ] Tahmin/sonuç tablosu
-- [ ] En az 5 test
-- [ ] İngilizce açıklama
+- [ ] Tahmin/sonuç kaydı
+- [ ] En az 4 test
+- [ ] Teach-back notu
 - [ ] Daily log
 
 ## Geçiş kontrolü
-
-Aşağıdaki cümleyi hatasız açıklayabilmelisin:
-
-> Two names can refer to the same object; two different objects can still be equal.
+`is` ile `==` farkını implementation detail'e yaslanmadan açıklayabilmelisin.

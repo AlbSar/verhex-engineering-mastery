@@ -2,85 +2,42 @@
 status: ready
 day: 4
 date: 2026-09-09
-estimated_hours: 4.5
+estimated_hours: 2.5
 ---
 
 # Day 04 — Scope, Namespace, Function Object ve Closure
 
 ## Günün amacı
+Python'da isim çözümleme zincirini, function object davranışını ve closure mekanizmasını deneyle açıklamak.
 
-Python'da isim çözümleme zincirini, function object davranışını ve closure mekanizmasını deneylerle açıklamak.
+## 1. Teori — 30 dakika
+Kendi cümlelerinle açıkla: namespace, scope, LEGB, `global`, `nonlocal`, closure, free variable ve late binding.
 
-## 1. Teori — 60 dakika
+## 2. LEGB deneyleri — 40 dakika
+En az üç kontrollü deney yap:
+- local shadowing
+- `nonlocal` ile enclosing binding değişikliği
+- built-in shadowing riski
 
-Kendi cümlelerinle açıkla:
+`globals()` ve `locals()` çıktısını yalnızca gözlem amacıyla incele.
 
-- Namespace
-- Scope
-- LEGB
-- Local ve global binding
-- `global`
-- `nonlocal`
-- Function object
-- Closure
-- Free variable
-- Late binding
+## 3. Closure laboratuvarı — 45 dakika
+İki örnek yaz:
+- state tutan sayaç closure
+- konfigürasyon bağlayan validator factory
 
-## 2. LEGB deneyleri — 60 dakika
+Serbest değişkenlerin nereden çözümlendiğini açıkla.
 
-Aynı isim için local, enclosing, global ve built-in katmanlarını ayrı ayrı gözlemle.
+## 4. Late-binding debugging — 25 dakika
+Loop içinde fonksiyon/lambda üret; beklenmeyen sonucu reproduce et. Factory function veya açık binding yaklaşımıyla düzelt ve regression testi yaz.
 
-Yapılacaklar:
-
-- Global ismi localde shadow et.
-- Enclosing scope değerini `nonlocal` ile değiştir.
-- Built-in bir ismi gölgele ve riskini açıkla.
-- `globals()` ve `locals()` çıktılarını kontrollü biçimde incele.
-
-## 3. Closure laboratuvarı — 75 dakika
-
-Aşağıdaki yapıları geliştir:
-
-- State tutan sayaç closure
-- Belirli eşik üzerinde uyarı üreten closure
-- Konfigürasyon bağlayan validator factory
-
-Her biri için closure içindeki serbest değişkenleri açıkla.
-
-## 4. Late-binding debugging — 45 dakika
-
-Loop içinde lambda/function üret ve tüm fonksiyonların neden son loop değerini döndürdüğünü göster.
-
-Ardından iki farklı düzeltme uygula:
-
-- Default argument ile binding
-- Factory function ile yeni scope
-
-Regression testlerini yaz.
-
-## 5. İngilizce — 30 dakika
-
-İngilizce 150 kelime:
-
-> Explain how a closure retains access to variables from its enclosing scope.
-
-Şu ifadeleri kullan:
-
-- enclosing scope
-- free variable
-- evaluated later
-- binding time
-- retained state
+## 5. Teach-back ve log — 10 dakika
+`global` ile `nonlocal` farkını bir kod örneği üzerinden açıkla ve daily log'a ekle.
 
 ## Teslimatlar
-
-- [ ] LEGB deney dosyası
-- [ ] Üç closure örneği
-- [ ] Late-binding reproducer
-- [ ] İki alternatif düzeltme
-- [ ] Regression testleri
-- [ ] İngilizce açıklama
-
-## Geçiş kontrolü
-
-`global` ile `nonlocal` arasındaki farkı kod örneği üzerinden açıklayabilmelisin.
+- [ ] LEGB deneyleri
+- [ ] İki closure örneği
+- [ ] Late-binding reproducer + fix
+- [ ] Regression testi
+- [ ] Teach-back notu
+- [ ] Daily log
