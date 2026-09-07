@@ -17,13 +17,13 @@ concepts:
     source: 04-daily-logs/2026-09/2026-09-07-session-evidence.md
     rationale: Predicted 2 then 0 and successful AND; OR misconception corrected with observation.
   stdin_stdout_pipe:
-    knowledge_state: INTRODUCED
+    knowledge_state: PRACTICING
     source: 04-daily-logs/2026-09/2026-09-07-session-evidence.md
-    rationale: Pipeline executed before the learner understood wc; requires teach-first guided practice.
+    rationale: After instruction, learner explained streaming versus grouping and predicted delayed wc output; guided practice, not independent mastery.
   wc_flags:
-    knowledge_state: INTRODUCED
+    knowledge_state: PRACTICING
     source: 04-daily-logs/2026-09/2026-09-07-session-evidence.md
-    rationale: Name and flags explained; newline prediction and independent explanation pending.
+    rationale: Learner explained missing final newline and predicted word/newline counts; -l/-w practiced, -c/-m introduced only.
   python_list_basics:
     knowledge_state: UNKNOWN
     source: null
@@ -37,10 +37,26 @@ concepts:
     source: null
     rationale: Not taught; later Phase A topic, not Week 001 requirement.
   git_index_commit:
-    knowledge_state: INTRODUCED
+    knowledge_state: PRACTICING
     source: 04-daily-logs/2026-09/2026-09-07-session-evidence.md
-    rationale: Historical learner log mentions Git practice and weak understanding; not independent proof.
+    rationale: Learner explained index versus working tree, observed both diffs, staged and committed notes as 2e43569; guided workflow.
   process_socket_http:
     knowledge_state: UNKNOWN
     source: null
     rationale: Planned observations are not completed evidence.
+  pipe_eof_and_grouping:
+    knowledge_state: PRACTICING
+    source: 04-daily-logs/2026-09/2026-09-07-session-evidence.md
+    rationale: Learner corrected the single-packet model; EOF initially needed explanation, then predicted wc waits for group completion.
+  file_descriptors_redirection:
+    knowledge_state: PRACTICING
+    source: 04-daily-logs/2026-09/2026-09-07-session-evidence.md
+    rationale: Observed stderr redirection and file output; correctly explained fd 1 target changes. fd 3+ only introduced.
+  git_branch_head:
+    knowledge_state: PRACTICING
+    source: 04-daily-logs/2026-09/2026-09-07-session-evidence.md
+    rationale: Observed distinct main/learning commit pointers; separate-environment misconception corrected, needs short recall.
+  git_fetch_push_remote_refs:
+    knowledge_state: INTRODUCED
+    source: 04-daily-logs/2026-09/2026-09-07.md
+    rationale: Fetch/push/origin/remote-tracking explained; learner stopped before answering or running the next exercise. Resume here.

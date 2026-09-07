@@ -87,7 +87,7 @@ Fazlar kesin tarihli kurs modülleri değildir. Evidence yetersizse uzar; güçl
 **Week 001 — 5–12 Eylül 2026**
 **Odak: Python + Linux + Networking + Git baseline; 19 required saat**
 
-Plan tarihleri ilerleme kanıtı değildir. Aktif resume noktası Day 01 shell akışı: [session evidence](04-daily-logs/2026-09/2026-09-07-session-evidence.md). Docker OPTIONAL; graph scheduler ve ileri closure STRETCH. [Aktif kaynak kartları](12-resources/WEEK_001.md).
+Plan tarihleri ilerleme kanıtı değildir. Aktif resume noktası Day 01 Git: fetch/push ve remote-tracking ayrımı. [7 Eylül kapanışı ve sonraki oturum](04-daily-logs/2026-09/2026-09-07.md). Docker OPTIONAL; graph scheduler ve ileri closure STRETCH. [Aktif kaynak kartları](12-resources/WEEK_001.md).
 
 - Tarihsel takip: GitHub issue #1; erişim audit sırasında doğrulanamadı. Aktif kapsam ve durum bu repodaki haftalık plan ve evidence dosyalarıdır.
 - Haftalık plan: [`03-weeks/week-001/WEEK_PLAN.md`](03-weeks/week-001/WEEK_PLAN.md)
